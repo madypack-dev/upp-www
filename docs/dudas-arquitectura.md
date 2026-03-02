@@ -25,7 +25,7 @@ Opciones:
   - Pros: versión actual con mejoras de performance.
   - Contras: cambios de configuración respecto a v3 que pueden agregar fricción en arranque.
 - Opción B: Tailwind v3.4.x.
-  - Pros: configuración muy estable para migrar rápidamente desde el `tailwind.config` de `index.html`.
+  - Pros: configuración muy estable para migrar rápidamente desde el `tailwind.config` de `example.html`.
   - Contras: no parte de la versión más nueva.
 
 Recomendación final:
@@ -51,7 +51,7 @@ Recomendación final:
 
 Opciones:
 
-- Opción A: mantener URLs remotas de `index.html`.
+- Opción A: mantener URLs remotas de `example.html`.
   - Pros: cero trabajo inicial.
   - Contras: riesgo de rotura por dependencia externa/hotlinking.
 - Opción B: descargar y versionar imágenes en el repo.
@@ -61,6 +61,7 @@ Opciones:
 Recomendación final:
 
 - Descargar y versionar imágenes utilizadas en producción para evitar dependencia externa.
+- Estado actual: implementado con assets locales en `src/assets/images`.
 
 ### 5) Estructura de componentes
 
@@ -79,8 +80,8 @@ Recomendación final:
 
 ## Dudas de alto nivel (requieren definición)
 
-1. ¿El alcance inicial es solo una landing estática o también catálogo navegable/filtros?
-2. ¿Se requiere SSR/SEO avanzado desde la primera versión o SPA alcanza?
-3. ¿Cuáles son los datos reales de contacto (número de WhatsApp y teléfono)?
-4. ¿El contenido será estático en código o vendrá de un CMS/API?
-5. ¿Hay lineamientos de marca adicionales (logo oficial, paleta definitiva, imágenes propias)?
+- Resuelta: el alcance inicial es landing estática institucional.
+- Resuelta: para v1 se implementa MVP SPA.
+- Resuelta: contacto publicado = +54 9 11 2693-5682.
+- Resuelta: el contenido de v1 será estático en código.
+- Resuelta: se mantienen temporalmente branding, paleta e imágenes de `example.html`.

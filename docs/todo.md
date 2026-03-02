@@ -3,7 +3,10 @@
 ## Certezas extraídas de la referencia
 
 - El proyecto se implementará con Vue + TypeScript + Tailwind.
-- La referencia funcional/visual es `index.html` (archivo de referencia actual).
+- La referencia funcional/visual es `example.html`.
+- El contenido de la v1 será estático en código (sin CMS/API).
+- Branding temporal de la v1: mantener paleta/estética/assets de `example.html`.
+- Las imágenes de hero y categorías se versionan localmente en `src/assets/images`.
 - La landing base tiene estas secciones:
   - Header sticky.
   - Hero principal con fondo e información comercial.
@@ -20,11 +23,11 @@
 
 ## Plan de ejecución confirmado
 
-1. [ ] Inicializar base Vue 3 + TypeScript.
-2. [ ] Configurar Tailwind con tokens y utilidades equivalentes a la referencia.
-3. [ ] Definir estructura de componentes por secciones de la landing.
-4. [ ] Migrar markup y estilos de `index.html` a componentes Vue.
-5. [ ] Integrar tipografía y sistema de íconos usados en la referencia.
-6. [ ] Asegurar layout responsive mobile-first y validar desktop.
-7. [ ] Dejar configuraciones de contacto (WhatsApp/teléfono) en variables centralizadas.
-8. [ ] Correr validaciones de calidad (build/lint) al cerrar la primera iteración.
+1. [x] Inicializar base Vue 3 + TypeScript.
+2. [x] Configurar Tailwind con tokens y utilidades equivalentes a la referencia.
+3. [x] Definir estructura de componentes por secciones de la landing.
+4. [x] Migrar markup y estilos de `example.html` a componentes Vue.
+5. [x] Integrar tipografía y sistema de íconos usados en la referencia.
+6. [x] Asegurar layout responsive mobile-first y validar desktop.
+7. [x] Dejar configuraciones de contacto (WhatsApp/teléfono) en variables centralizadas.
+8. [x] Correr validaciones de calidad (build/lint) al cerrar la primera iteración.

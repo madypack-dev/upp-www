@@ -1,169 +1,29 @@
-<!DOCTYPE html>
-
-<html class="dark" lang="es"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#13ec5b",
-                        "background-light": "#f6f8f6",
-                        "background-dark": "#102216",
-                    },
-                    fontFamily: {
-                        "display": ["Space Grotesk", "sans-serif"]
-                    },
-                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
-                },
-            },
-        }
-    </script>
-<style>
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        .glass-effect {
-            background: rgba(16, 34, 22, 0.8);
-            backdrop-filter: blur(12px);
-        }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <title>UPP | Unión Papelera</title>
   </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
-<!-- Header -->
-<header class="sticky top-0 z-50 glass-effect border-b border-primary/10 px-4 py-3 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<div class="size-10 bg-primary/20 rounded flex items-center justify-center border border-primary/30">
-<span class="material-symbols-outlined text-primary text-2xl">recycling</span>
-</div>
-<div>
-<h1 class="text-lg font-bold leading-none tracking-tight">UPP</h1>
-<p class="text-[10px] uppercase tracking-widest text-primary font-semibold">Unión Papelera</p>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<button class="p-2 rounded-full hover:bg-white/10 text-slate-100">
-<span class="material-symbols-outlined">search</span>
-</button>
-<button class="p-2 rounded-full hover:bg-white/10 text-slate-100">
-<span class="material-symbols-outlined">menu</span>
-</button>
-</div>
-</header>
-<main class="pb-32">
-<!-- Hero Section -->
-<section class="p-4">
-<div class="relative h-80 w-full overflow-hidden rounded-xl bg-slate-800 flex flex-col justify-end p-6 border border-primary/20">
-<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent z-10"></div>
-<div class="absolute inset-0 bg-cover bg-center" data-alt="Industrial paper rolls in a warehouse" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCDRQVu60us3T8xUvr2O0-0BETFPqbKfeo4wVS_AA85DgMXPXenEvYHVLLDPdkivak6EDzta0oR4s7LPYNfUz6p7ER_zsn-caNKI4FMltPDfHWPxDdXHWRd977EbHAaoaofKh2s1MpIHehMzQC9XZtFsmyTRsqSchaD2QxViRCGCCaNvz4bBtzLlYbFwp0f-1GyjFIApky5IeraYDjdGky7tt6snk2jl4_P5MZihAAmt_uvm9Zh4FS79T1N2u_qzj2a2K0c-ORxGKE')"></div>
-<div class="relative z-20">
-<span class="inline-block px-3 py-1 bg-primary text-background-dark text-[10px] font-bold rounded-full uppercase tracking-wider mb-3">Venta Directa de Fábrica</span>
-<h2 class="text-3xl font-bold leading-tight text-white mb-2">Bobinas de Papel Kraft e Higiene 100% Reciclado</h2>
-<p class="text-slate-200 text-sm max-w-xs">Soluciones industriales sostenibles para el mercado B2B y mayorista.</p>
-</div>
-</div>
-</section>
-<!-- Stats Bar -->
-<section class="px-4 mb-8">
-<div class="bg-primary/10 border border-primary/20 rounded-xl p-4 flex items-center justify-between">
-<div class="flex items-center gap-3">
-<div class="size-10 bg-primary/20 rounded-full flex items-center justify-center">
-<span class="material-symbols-outlined text-primary">eco</span>
-</div>
-<div>
-<p class="text-[10px] uppercase text-slate-400 font-bold tracking-wider leading-none">Sostenibilidad</p>
-<p class="text-xl font-bold text-slate-100">1500+ <span class="text-sm font-medium text-primary">Ton. Recicladas</span></p>
-</div>
-</div>
-<div class="text-right">
-<p class="text-primary text-sm font-bold flex items-center justify-end gap-1">
-<span class="material-symbols-outlined text-xs">trending_up</span> +15%
-                    </p>
-<p class="text-[10px] text-slate-400">vs año anterior</p>
-</div>
-</div>
-</section>
-<!-- Product Categories -->
-<section class="px-4 mb-8">
-<div class="flex items-center justify-between mb-4">
-<h3 class="text-xl font-bold tracking-tight">Categorías de Productos</h3>
-<button class="text-primary text-sm font-semibold flex items-center gap-1">Ver todos <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
-</div>
-<div class="grid grid-cols-1 gap-4">
-<!-- Kraft Card -->
-<div class="group bg-slate-900 border border-primary/10 rounded-xl overflow-hidden flex h-40">
-<div class="w-1/3 bg-cover bg-center" data-alt="Kraft paper rolls closeup" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB9bFDJO0qNC6m3CfW2A_NAar74wC6icoWC0S02lQoPDB3x3atiUUkYRmWTuu83WdV-RvvNj8SSBiD35h80PhmC5VJCU7ZH0tdEYcTXwFqJ_VKlgVmP1UvUNBVsfdfWya4EXCTe3pLCIcG7vKrN7Iq7YF7T7LegSsFTbGaI-ezPUYCI_fPuoDqVnTXo_09wfkD5Ny6UMaQwDZ_pv2e1vpJyKld4wA43nZAsTbQmx02af3wQDRRmMRXKIdI3cfbF0ax0XPeC_xDaU_k')"></div>
-<div class="w-2/3 p-4 flex flex-col justify-between">
-<div>
-<h4 class="text-lg font-bold text-white mb-1">Papel Kraft</h4>
-<div class="flex flex-wrap gap-2">
-<span class="text-[10px] px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded">60-120 gr/m²</span>
-<span class="text-[10px] px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded">Alta Resistencia</span>
-</div>
-</div>
-<p class="text-xs text-slate-400 line-clamp-2">Ideal para embalaje industrial, bolsas y protección de mercadería.</p>
-</div>
-</div>
-<!-- Higiene Card -->
-<div class="group bg-slate-900 border border-primary/10 rounded-xl overflow-hidden flex h-40">
-<div class="w-1/3 bg-cover bg-center" data-alt="Hygienic paper industrial rolls" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBSi_-EOlTeWSl7KuZC7gGxjZUL5XEUXabIyMbY56MuGq6-C0WtPpYqIGFWAaSlBcjJkETzk1awf5JsOFF4sRlSZ5F8_klZW-xdME78QjUCwfCC0pBGa9utIqDsLH3bEHzKPt9-uxFF69qm65FJoOJhp4Ypqj7nBunFE_B5jNInXhRp1rWvYSDWb1hoI5Pb7Kqy7WYqG4guMQfOkydCW1y8M34T6636aTI6nXxkIOP_ZrKouBBLCnK6b-k89-Pukgvce1fQxWqV7OQ')"></div>
-<div class="w-2/3 p-4 flex flex-col justify-between">
-<div>
-<h4 class="text-lg font-bold text-white mb-1">Línea Higiene</h4>
-<div class="flex flex-wrap gap-2">
-<span class="text-[10px] px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded">Doble Hoja</span>
-<span class="text-[10px] px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded">100% Celulosa Reciclada</span>
-</div>
-</div>
-<p class="text-xs text-slate-400 line-clamp-2">Bobinas jumbo para institucionales y fraccionadores.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Location/Direct Sales -->
-<section class="px-4 mb-4">
-<div class="bg-primary rounded-xl p-6 text-background-dark relative overflow-hidden">
-<div class="absolute -right-10 -bottom-10 opacity-20 transform rotate-12">
-<span class="material-symbols-outlined text-[120px]">local_shipping</span>
-</div>
-<div class="relative z-10">
-<h4 class="text-xl font-bold mb-2">Entregas en Ringuelet</h4>
-<p class="font-medium mb-4 text-background-dark/80">Logística propia para La Plata y GBA. Consulta por envíos al interior.</p>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined">location_on</span>
-<span class="font-bold underline">Calle 508 e/ 16 y 17, Ringuelet</span>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Floating Action Bar / Bottom Sticky -->
-<div class="fixed bottom-0 left-0 right-0 z-50 p-4 pb-8 glass-effect border-t border-primary/20">
-<div class="max-w-md mx-auto flex gap-3">
-<a class="flex-1 bg-[#25D366] text-white flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-lg shadow-lg shadow-[#25D366]/20" href="https://wa.me/yournumber">
-<svg class="size-6 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
-</svg>
-                Cotizar x WhatsApp
-            </a>
-<button class="bg-primary/20 text-primary border border-primary/40 size-[60px] flex items-center justify-center rounded-xl">
-<span class="material-symbols-outlined text-3xl">phone_in_talk</span>
-</button>
-</div>
-</div>
-<!-- Bottom Nav (Tab Bar style) -->
-<div class="fixed bottom-0 left-0 right-0 bg-background-dark/95 border-t border-white/5 flex h-16 pointer-events-none opacity-0">
-<!-- Spacer for the sticky CTA above -->
-</div>
-</body></html>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
