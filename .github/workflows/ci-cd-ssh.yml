@@ -35,8 +35,82 @@ jobs:
       DEPLOY_SSH_PORT: ${{ vars.DEPLOY_SSH_PORT }}
       DEPLOY_REMOTE_DIR: ${{ vars.DEPLOY_REMOTE_DIR }}
       DEPLOY_HEALTHCHECK_URL: ${{ vars.DEPLOY_HEALTHCHECK_URL }}
+      DEPLOY_DEBUG: ${{ vars.DEPLOY_DEBUG }}
+      EXPECTED_DEPLOY_REMOTE_DIR: /home/papelera/public_html
+      EXPECTED_HEALTHCHECK_URL: https://unionpapeleraplatense.com.ar/
 
     steps:
+      - name: Preflight / Validate deploy inputs
+        run: |
+          set -euo pipefail
+          missing=0
+
+          for key in DEPLOY_SSH_HOST DEPLOY_SSH_USER DEPLOY_SSH_PRIVATE_KEY DEPLOY_SSH_KNOWN_HOSTS DEPLOY_REMOTE_DIR DEPLOY_HEALTHCHECK_URL; do
+            if [ -z "${!key:-}" ]; then
+              echo "::error::Missing required secret/variable: ${key}"
+              missing=1
+            fi
+          done
+
+          if [ "$missing" -ne 0 ]; then
+            exit 1
+          fi
+
+          deploy_remote_dir="${DEPLOY_REMOTE_DIR%/}"
+          expected_remote_dir="${EXPECTED_DEPLOY_REMOTE_DIR%/}"
+
+          if [[ "${deploy_remote_dir}" != /* ]]; then
+            echo "::error::DEPLOY_REMOTE_DIR must be an absolute path. Got: ${DEPLOY_REMOTE_DIR}"
+            exit 1
+          fi
+
+          case "${deploy_remote_dir}" in
+            "/"|"/home"|"/root"|"/var"|"/opt"|"/tmp"|"/usr")
+              echo "::error::DEPLOY_REMOTE_DIR points to a protected/high-risk path: ${deploy_remote_dir}"
+              exit 1
+              ;;
+          esac
+
+          if [ "${deploy_remote_dir}" != "${expected_remote_dir}" ]; then
+            echo "::error::DEPLOY_REMOTE_DIR mismatch. Expected '${expected_remote_dir}', got '${deploy_remote_dir}'."
+            exit 1
+          fi
+
+          if [ "${DEPLOY_HEALTHCHECK_URL}" != "${EXPECTED_HEALTHCHECK_URL}" ]; then
+            echo "::error::DEPLOY_HEALTHCHECK_URL mismatch. Expected '${EXPECTED_HEALTHCHECK_URL}', got '${DEPLOY_HEALTHCHECK_URL}'."
+            exit 1
+          fi
+
+      - name: Preflight / Debug deploy context
+        run: |
+          set -euo pipefail
+
+          echo "event_name=${GITHUB_EVENT_NAME}"
+          echo "ref=${GITHUB_REF}"
+          echo "sha=${GITHUB_SHA}"
+          echo "workflow_run_head_branch=${{ github.event.workflow_run.head_branch || 'n/a' }}"
+          echo "workflow_run_head_sha=${{ github.event.workflow_run.head_sha || 'n/a' }}"
+          echo "deploy_remote_dir=${DEPLOY_REMOTE_DIR%/}"
+          echo "deploy_ssh_port=${DEPLOY_SSH_PORT:-22}"
+          echo "deploy_healthcheck_url=${DEPLOY_HEALTHCHECK_URL}"
+          echo "deploy_debug=${DEPLOY_DEBUG:-false}"
+
+          if [ -n "${DEPLOY_SSH_HOST:-}" ]; then echo "ssh_host_set=true"; else echo "ssh_host_set=false"; fi
+          if [ -n "${DEPLOY_SSH_USER:-}" ]; then echo "ssh_user_set=true"; else echo "ssh_user_set=false"; fi
+          if [ -n "${DEPLOY_SSH_PRIVATE_KEY:-}" ]; then echo "ssh_private_key_set=true"; else echo "ssh_private_key_set=false"; fi
+          if [ -n "${DEPLOY_SSH_KNOWN_HOSTS:-}" ]; then echo "ssh_known_hosts_set=true"; else echo "ssh_known_hosts_set=false"; fi
+
+          {
+            echo "### Deploy Context"
+            echo "- event: \`${GITHUB_EVENT_NAME}\`"
+            echo "- ref: \`${GITHUB_REF}\`"
+            echo "- sha: \`${GITHUB_SHA}\`"
+            echo "- remote_dir: \`${DEPLOY_REMOTE_DIR%/}\`"
+            echo "- ssh_port: \`${DEPLOY_SSH_PORT:-22}\`"
+            echo "- healthcheck: \`${DEPLOY_HEALTHCHECK_URL}\`"
+            echo "- debug_mode: \`${DEPLOY_DEBUG:-false}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
@@ -56,27 +130,17 @@ jobs:
           set -euo pipefail
           npm run build
 
+      - name: Build / Dist summary
+        run: |
+          set -euo pipefail
+          du -sh dist
+          find dist -maxdepth 2 -type f | sort
+
       - name: Preflight / Ensure rsync
         run: |
           if ! command -v rsync &> /dev/null; then
             sudo apt-get update -qq
             sudo apt-get install -y -qq rsync
-          fi
-
-      - name: Preflight / Validate deploy inputs
-        run: |
-          set -euo pipefail
-          missing=0
-
-          for key in DEPLOY_SSH_HOST DEPLOY_SSH_USER DEPLOY_SSH_PRIVATE_KEY DEPLOY_SSH_KNOWN_HOSTS DEPLOY_REMOTE_DIR; do
-            if [ -z "${!key:-}" ]; then
-              echo "::error::Missing required secret/variable: ${key}"
-              missing=1
-            fi
-          done
-
-          if [ "$missing" -ne 0 ]; then
-            exit 1
           fi
 
       - name: Deploy / Configure SSH
@@ -94,19 +158,30 @@ jobs:
       - name: Deploy / Create remote directory
         run: |
           set -euo pipefail
+          deploy_remote_dir="${DEPLOY_REMOTE_DIR%/}"
           ssh_port="${DEPLOY_SSH_PORT:-22}"
           ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes -p "${ssh_port}" \
             "${DEPLOY_SSH_USER}@${DEPLOY_SSH_HOST}" \
-            "mkdir -p '${DEPLOY_REMOTE_DIR}'"
+            "mkdir -p '${deploy_remote_dir}'"
+
+      - name: Deploy / Rsync dry-run (debug)
+        if: ${{ env.DEPLOY_DEBUG == '1' || env.DEPLOY_DEBUG == 'true' }}
+        run: |
+          set -euo pipefail
+          deploy_remote_dir="${DEPLOY_REMOTE_DIR%/}"
+          ssh_port="${DEPLOY_SSH_PORT:-22}"
+          rsync -azvn --delete \
+            -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes -p ${ssh_port}" \
+            dist/ "${DEPLOY_SSH_USER}@${DEPLOY_SSH_HOST}:${deploy_remote_dir}/"
 
       - name: Deploy / Rsync dist
         run: |
           set -euo pipefail
+          deploy_remote_dir="${DEPLOY_REMOTE_DIR%/}"
           ssh_port="${DEPLOY_SSH_PORT:-22}"
           rsync -az --delete \
             -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes -p ${ssh_port}" \
-            dist/ "${DEPLOY_SSH_USER}@${DEPLOY_SSH_HOST}:${DEPLOY_REMOTE_DIR}/"
+            dist/ "${DEPLOY_SSH_USER}@${DEPLOY_SSH_HOST}:${deploy_remote_dir}/"
 
       - name: Post-deploy / Health check
-        if: ${{ env.DEPLOY_HEALTHCHECK_URL != '' }}
         run: curl -Ifs --retry 3 --retry-delay 5 "${DEPLOY_HEALTHCHECK_URL}"

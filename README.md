@@ -65,12 +65,19 @@ El deploy está configurado para:
 
 ### Variables requeridas
 
-- `DEPLOY_REMOTE_DIR`: directorio remoto absoluto donde se sincroniza `dist/` (ejemplo operativo actual: `/home/papelera/public_html`).
+- `DEPLOY_REMOTE_DIR`: directorio remoto absoluto donde se sincroniza `dist/` (valor esperado en producción: `/home/papelera/public_html`).
+- `DEPLOY_HEALTHCHECK_URL`: URL de verificación post-deploy (valor esperado en producción: `https://unionpapeleraplatense.com.ar/`).
 
 ### Variables opcionales
 
 - `DEPLOY_SSH_PORT` (default: `22`).
-- `DEPLOY_HEALTHCHECK_URL` (si se define, el workflow falla si no responde con código HTTP exitoso).
+- `DEPLOY_DEBUG` (`true` o `1`): habilita depuración adicional del deploy (contexto + `rsync --dry-run`).
+
+### Guardrails de producción (workflow)
+
+- El workflow falla si `DEPLOY_REMOTE_DIR` no coincide con `/home/papelera/public_html`.
+- El workflow falla si `DEPLOY_HEALTHCHECK_URL` no coincide con `https://unionpapeleraplatense.com.ar/`.
+- El deploy siempre ejecuta healthcheck al final.
 
 ### Estado operativo confirmado en VPS (2026-03-02)
 

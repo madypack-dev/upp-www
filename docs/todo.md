@@ -17,6 +17,8 @@
 - Variables de `production` corregidas: `DEPLOY_REMOTE_DIR=/home/papelera/public_html` y `DEPLOY_HEALTHCHECK_URL=https://unionpapeleraplatense.com.ar/`.
 - Topología de deploy v1: un único target (producción).
 - Política de deploy v1 confirmada: `DocumentRoot` directo (`/home/papelera/public_html`) con `rsync --delete` y carpeta gestionada por CI/CD.
+- Hardening de deploy v1: el workflow valida `DEPLOY_REMOTE_DIR` y `DEPLOY_HEALTHCHECK_URL` contra valores de producción esperados antes de desplegar.
+- Depuración de deploy v1: se agregó modo debug opcional por variable `DEPLOY_DEBUG` para contexto y `rsync --dry-run`.
 - Se eliminó el archivo de referencia HTML inicial del repo al confirmar que no participa del build/runtime.
 - La landing base tiene estas secciones:
   - Header sticky.

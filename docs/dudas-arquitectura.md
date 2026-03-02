@@ -104,3 +104,4 @@ Recomendación final:
 - Resuelta: deploy automático por SSH solo desde `main` a producción (single target).
 - Resuelta: política de despliegue v1 = `DocumentRoot` directo (`/home/papelera/public_html`) con `rsync --delete`.
 - Resuelta: el `DocumentRoot` de UPP queda gestionado por CI/CD; no dejar archivos manuales persistentes fuera de `dist/` en ese directorio.
+- Resuelta: hardening del workflow con guardrails explícitos de producción (`DEPLOY_REMOTE_DIR` y `DEPLOY_HEALTHCHECK_URL`) y depuración opcional (`DEPLOY_DEBUG`).
