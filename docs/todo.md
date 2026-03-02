@@ -7,6 +7,9 @@
 - El contenido de la v1 será estático en código (sin CMS/API).
 - Branding temporal de la v1: mantener paleta/estética/assets de `example.html`.
 - Las imágenes de hero y categorías se versionan localmente en `src/assets/images`.
+- Deploy v1: SSH + `rsync` desde GitHub Actions.
+- Deploy automático: solo `main` hacia producción.
+- Topología de deploy v1: un único target (producción).
 - La landing base tiene estas secciones:
   - Header sticky.
   - Hero principal con fondo e información comercial.
@@ -31,3 +34,4 @@
 6. [x] Asegurar layout responsive mobile-first y validar desktop.
 7. [x] Dejar configuraciones de contacto (WhatsApp/teléfono) en variables centralizadas.
 8. [x] Correr validaciones de calidad (build/lint) al cerrar la primera iteración.
+9. [x] Definir estrategia de deploy MVP (SSH, `main` -> producción, single target).

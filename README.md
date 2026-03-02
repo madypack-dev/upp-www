@@ -41,3 +41,27 @@ Build de producción:
 ```bash
 npm run build
 ```
+
+## Deploy (GitHub Actions + SSH)
+
+El deploy automático está configurado para:
+
+- Ejecutarse solo en `main` (producción).
+- Correr después de `CI / Quality` exitoso en `push`.
+- Publicar `dist/` por SSH con `rsync`.
+
+### Secrets requeridos
+
+- `DEPLOY_SSH_HOST`
+- `DEPLOY_SSH_USER`
+- `DEPLOY_SSH_PRIVATE_KEY`
+- `DEPLOY_SSH_KNOWN_HOSTS`
+
+### Variables requeridas
+
+- `DEPLOY_REMOTE_DIR`
+
+### Variables opcionales
+
+- `DEPLOY_SSH_PORT` (default: `22`)
+- `DEPLOY_HEALTHCHECK_URL` (si se define, el workflow falla si no responde)

@@ -1,0 +1,112 @@
+name: CD / SSH
+
+on:
+  workflow_run:
+    workflows:
+      - CI / Quality
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cd-ssh-${{ github.event.workflow_run.head_branch || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-production:
+    name: Deploy / SSH (production)
+    runs-on: ubuntu-latest
+    if: >
+      (github.event_name == 'workflow_dispatch' &&
+       github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_branch == 'main')
+    environment: production
+    env:
+      DEPLOY_SSH_HOST: ${{ secrets.DEPLOY_SSH_HOST }}
+      DEPLOY_SSH_USER: ${{ secrets.DEPLOY_SSH_USER }}
+      DEPLOY_SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
+      DEPLOY_SSH_KNOWN_HOSTS: ${{ secrets.DEPLOY_SSH_KNOWN_HOSTS }}
+      DEPLOY_SSH_PORT: ${{ vars.DEPLOY_SSH_PORT }}
+      DEPLOY_REMOTE_DIR: ${{ vars.DEPLOY_REMOTE_DIR }}
+      DEPLOY_HEALTHCHECK_URL: ${{ vars.DEPLOY_HEALTHCHECK_URL }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Build / Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Build / Install dependencies
+        run: npm ci
+
+      - name: Build / Dist
+        run: |
+          set -euo pipefail
+          npm run build
+
+      - name: Preflight / Ensure rsync
+        run: |
+          if ! command -v rsync &> /dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq rsync
+          fi
+
+      - name: Preflight / Validate deploy inputs
+        run: |
+          set -euo pipefail
+          missing=0
+
+          for key in DEPLOY_SSH_HOST DEPLOY_SSH_USER DEPLOY_SSH_PRIVATE_KEY DEPLOY_SSH_KNOWN_HOSTS DEPLOY_REMOTE_DIR; do
+            if [ -z "${!key:-}" ]; then
+              echo "::error::Missing required secret/variable: ${key}"
+              missing=1
+            fi
+          done
+
+          if [ "$missing" -ne 0 ]; then
+            exit 1
+          fi
+
+      - name: Deploy / Configure SSH
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+
+          printf '%s\n' "${DEPLOY_SSH_PRIVATE_KEY}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+          printf '%s\n' "${DEPLOY_SSH_KNOWN_HOSTS}" > ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Deploy / Create remote directory
+        run: |
+          set -euo pipefail
+          ssh_port="${DEPLOY_SSH_PORT:-22}"
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes -p "${ssh_port}" \
+            "${DEPLOY_SSH_USER}@${DEPLOY_SSH_HOST}" \
+            "mkdir -p '${DEPLOY_REMOTE_DIR}'"
+
+      - name: Deploy / Rsync dist
+        run: |
+          set -euo pipefail
+          ssh_port="${DEPLOY_SSH_PORT:-22}"
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes -p ${ssh_port}" \
+            dist/ "${DEPLOY_SSH_USER}@${DEPLOY_SSH_HOST}:${DEPLOY_REMOTE_DIR}/"
+
+      - name: Post-deploy / Health check
+        if: ${{ env.DEPLOY_HEALTHCHECK_URL != '' }}
+        run: curl -Ifs --retry 3 --retry-delay 5 "${DEPLOY_HEALTHCHECK_URL}"

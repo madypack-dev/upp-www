@@ -78,6 +78,22 @@ Recomendación final:
 
 - Componentizar por secciones desde el inicio.
 
+### 6) Protocolo de deploy
+
+Opciones:
+
+- Opción A: FTPS.
+  - Pros: compatible con hosting clásico.
+  - Contras: más fricción operativa y pipeline legacy incompatible con el repo actual.
+- Opción B: SSH + `rsync`.
+  - Pros: más simple, robusto y auditable para un sitio estático.
+  - Contras: requiere gestión de `known_hosts` y llave privada.
+
+Recomendación final:
+
+- Usar SSH + `rsync` para la v1.
+- Estado actual: implementado en `.github/workflows/ci-cd-ssh.yml` (workflow `CD / SSH`).
+
 ## Dudas de alto nivel (requieren definición)
 
 - Resuelta: el alcance inicial es landing estática institucional.
@@ -85,3 +101,4 @@ Recomendación final:
 - Resuelta: contacto publicado = +54 9 11 2693-5682.
 - Resuelta: el contenido de v1 será estático en código.
 - Resuelta: se mantienen temporalmente branding, paleta e imágenes de `example.html`.
+- Resuelta: deploy automático por SSH solo desde `main` a producción (single target).
