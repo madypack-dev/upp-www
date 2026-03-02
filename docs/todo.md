@@ -19,6 +19,9 @@
 - Política de deploy v1 confirmada: `DocumentRoot` directo (`/home/papelera/public_html`) con `rsync --delete` y carpeta gestionada por CI/CD.
 - Hardening de deploy v1: el workflow valida `DEPLOY_REMOTE_DIR` y `DEPLOY_HEALTHCHECK_URL` contra valores de producción esperados antes de desplegar.
 - Depuración de deploy v1: se agregó modo debug opcional por variable `DEPLOY_DEBUG` para contexto y `rsync --dry-run`.
+- Hardening frontend definido: tipografía e íconos se sirven localmente sin dependencias CDN.
+- Hardening frontend implementado: se removieron enlaces CDN de Google Fonts/Material Symbols en `index.html`.
+- Tipografía `Space Grotesk` local por `@fontsource` y set de íconos migrado a SVG local por componente.
 - Se eliminó el archivo de referencia HTML inicial del repo al confirmar que no participa del build/runtime.
 - La landing base tiene estas secciones:
   - Header sticky.
@@ -45,3 +48,4 @@
 7. [x] Dejar configuraciones de contacto (WhatsApp/teléfono) en variables centralizadas.
 8. [x] Correr validaciones de calidad (build/lint) al cerrar la primera iteración.
 9. [x] Definir estrategia de deploy MVP (SSH, `main` -> producción, single target).
+10. [x] Ejecutar hardening frontend para remover dependencias CDN de tipografía e íconos.

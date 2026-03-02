@@ -94,6 +94,38 @@ Recomendación final:
 - Usar SSH + `rsync` para la v1.
 - Estado actual: implementado en `.github/workflows/ci-cd-ssh.yml` (workflow `CD / SSH`).
 
+### 7) Tipografía local (sin CDN)
+
+Opciones:
+
+- Opción A: `@fontsource/space-grotesk`.
+  - Pros: integración simple con Vite, versionado por npm, sin gestionar archivos manuales.
+  - Contras: agrega dependencia.
+- Opción B: descargar y versionar archivos `.woff2` manualmente en `src/assets/fonts`.
+  - Pros: control total de archivos y pesos cargados.
+  - Contras: más trabajo operativo y mantenimiento manual.
+
+Recomendación final:
+
+- Usar `@fontsource/space-grotesk` para hardening rápido con bajo riesgo.
+- Estado actual: implementado con import local en `src/main.ts`.
+
+### 8) Iconografía local (sin CDN)
+
+Opciones:
+
+- Opción A: usar fuente de íconos completa (Material Symbols font local).
+  - Pros: cambio mínimo de markup y paridad visual inmediata.
+  - Contras: peso alto de bundle para una landing (se observó ~3.8 MB solo en la fuente de íconos).
+- Opción B: usar SVG local por ícono (subset de íconos realmente usados).
+  - Pros: reduce significativamente payload y mantiene independencia de CDN.
+  - Contras: requiere refactor de componentes para reemplazar `span` por `svg`.
+
+Recomendación final:
+
+- Usar SVG local por ícono para mantener performance y control de assets.
+- Estado actual: implementado con componente `src/components/icons/MaterialSymbolIcon.vue` y reemplazo en secciones de la landing.
+
 ## Dudas de alto nivel (requieren definición)
 
 - Resuelta: el alcance inicial es landing estática institucional.

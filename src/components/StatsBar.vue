@@ -5,7 +5,7 @@
     >
       <div class="flex items-center gap-3">
         <div class="flex size-10 items-center justify-center rounded-full bg-primary/20">
-          <span class="material-symbols-outlined text-primary">eco</span>
+          <MaterialSymbolIcon name="eco" class="size-6 text-primary" />
         </div>
         <div>
           <p class="text-[10px] font-bold uppercase leading-none tracking-wider text-slate-400">Sostenibilidad</p>
@@ -16,10 +16,14 @@
       </div>
       <div class="text-left sm:text-right">
         <p class="flex items-center gap-1 text-sm font-bold text-primary sm:justify-end">
-          <span class="material-symbols-outlined text-xs">trending_up</span> +15%
+          <MaterialSymbolIcon name="trending_up" class="size-4" /> +15%
         </p>
         <p class="text-[10px] text-slate-400">vs año anterior</p>
       </div>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import MaterialSymbolIcon from "./icons/MaterialSymbolIcon.vue";
+</script>

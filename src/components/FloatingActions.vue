@@ -20,7 +20,7 @@
         class="flex size-[60px] items-center justify-center rounded-xl border border-primary/40 bg-primary/20 text-primary"
         aria-label="Llamar"
       >
-        <span class="material-symbols-outlined text-3xl">phone_in_talk</span>
+        <MaterialSymbolIcon name="phone_in_talk" class="size-8" />
       </a>
     </div>
   </div>
@@ -28,6 +28,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import MaterialSymbolIcon from "./icons/MaterialSymbolIcon.vue";
 import { contact } from "../config/contact";
 
 const normalizeDigits = (value: string) => value.replace(/\D/g, "");

@@ -3,7 +3,7 @@
     <div class="mb-4 flex items-center justify-between gap-4">
       <h3 class="text-xl font-bold tracking-tight">Categorías de Productos</h3>
       <button type="button" class="flex items-center gap-1 text-sm font-semibold text-primary">
-        Ver todos <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        Ver todos <MaterialSymbolIcon name="arrow_forward" class="size-4" />
       </button>
     </div>
 
@@ -37,6 +37,7 @@
 </template>
 
 <script setup lang="ts">
+import MaterialSymbolIcon from "./icons/MaterialSymbolIcon.vue";
 import higieneImage from "../assets/images/higiene.png";
 import kraftImage from "../assets/images/kraft.png";
 

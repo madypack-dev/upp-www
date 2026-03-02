@@ -28,6 +28,7 @@ Construir una landing responsive que replique la experiencia base de la referenc
 - Arquitectura de v1: MVP SPA
 - Fuente de contenido v1: estático en código
 - Branding v1: temporalmente igual a la referencia inicial migrada
+- Tipografía servida localmente vía `@fontsource` e íconos servidos como SVG local (sin CDN)
 
 ## Desarrollo local
 
