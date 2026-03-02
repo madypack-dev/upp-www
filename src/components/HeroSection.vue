@@ -3,7 +3,9 @@
     <div
       class="relative flex h-80 w-full flex-col justify-end overflow-hidden rounded-xl border border-primary/20 bg-slate-800 p-6 md:h-[30rem] md:p-8"
     >
-      <div class="absolute inset-0 z-10 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent" />
+      <div
+        class="absolute inset-0 z-10 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent"
+      />
       <div
         class="absolute inset-0 bg-cover bg-center"
         :style="{ backgroundImage: `url('${heroImage}')` }"
@@ -14,7 +16,9 @@
         >
           Venta Directa de Fábrica
         </span>
-        <h2 class="mb-2 max-w-3xl text-3xl font-bold leading-tight text-white md:text-5xl">
+        <h2
+          class="mb-2 max-w-3xl text-3xl font-bold leading-tight text-white md:text-5xl"
+        >
           Bobinas de Papel Kraft e Higiene 100% Reciclado
         </h2>
         <p class="max-w-md text-sm text-slate-200 md:text-base">

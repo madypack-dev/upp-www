@@ -1,6 +1,8 @@
 <template>
   <section class="mb-4 px-4">
-    <div class="relative overflow-hidden rounded-xl bg-primary p-6 text-background-dark md:p-8">
+    <div
+      class="relative overflow-hidden rounded-xl bg-primary p-6 text-background-dark md:p-8"
+    >
       <div class="absolute -bottom-10 -right-10 rotate-12 opacity-20">
         <MaterialSymbolIcon name="local_shipping" class="size-[120px]" />
       </div>
@@ -11,7 +13,9 @@
         </p>
         <div class="flex items-center gap-2">
           <MaterialSymbolIcon name="location_on" class="size-6" />
-          <span class="font-bold underline">Calle 508 e/ 16 y 17, Ringuelet</span>
+          <span class="font-bold underline"
+            >Calle 508 e/ 16 y 17, Ringuelet</span
+          >
         </div>
       </div>
     </div>

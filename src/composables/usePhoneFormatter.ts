@@ -9,12 +9,12 @@ export const usePhoneFormatter = (): {
   /**
    * Elimina todo excepto dígitos
    */
-  const normalizeDigits = (value: string): string => value.replace(/\D/g, '');
+  const normalizeDigits = (value: string): string => value.replace(/\D/g, "");
 
   /**
    * Elimina todo excepto dígitos y signo +
    */
-  const normalizeTel = (value: string): string => value.replace(/[^\d+]/g, '');
+  const normalizeTel = (value: string): string => value.replace(/[^\d+]/g, "");
 
   return {
     normalizeDigits,

@@ -1,13 +1,21 @@
 <template>
-  <header class="glass-effect sticky top-0 z-50 border-b border-primary/10 px-4 py-3">
+  <header
+    class="glass-effect sticky top-0 z-50 border-b border-primary/10 px-4 py-3"
+  >
     <div class="mx-auto flex w-full max-w-6xl items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="flex size-10 items-center justify-center rounded border border-primary/30 bg-primary/20">
+        <div
+          class="flex size-10 items-center justify-center rounded border border-primary/30 bg-primary/20"
+        >
           <MaterialSymbolIcon name="recycling" class="size-6 text-primary" />
         </div>
         <div>
           <h1 class="text-lg font-bold leading-none tracking-tight">UPP</h1>
-          <p class="text-[10px] font-semibold uppercase tracking-widest text-primary">Unión Papelera</p>
+          <p
+            class="text-[10px] font-semibold uppercase tracking-widest text-primary"
+          >
+            Unión Papelera
+          </p>
         </div>
       </div>
       <div class="flex items-center gap-2">

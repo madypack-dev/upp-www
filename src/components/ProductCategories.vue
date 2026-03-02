@@ -2,7 +2,10 @@
   <section class="mb-8 px-4">
     <div class="mb-4 flex items-center justify-between gap-4">
       <h3 class="text-xl font-bold tracking-tight">Categorías de Productos</h3>
-      <button type="button" class="flex items-center gap-1 text-sm font-semibold text-primary">
+      <button
+        type="button"
+        class="flex items-center gap-1 text-sm font-semibold text-primary"
+      >
         Ver todos <MaterialSymbolIcon name="arrow_forward" class="size-4" />
       </button>
     </div>
@@ -13,10 +16,15 @@
         :key="category.title"
         class="flex h-40 overflow-hidden rounded-xl border border-primary/10 bg-slate-900 md:h-44"
       >
-        <div class="w-1/3 bg-cover bg-center" :style="{ backgroundImage: `url('${category.image}')` }" />
+        <div
+          class="w-1/3 bg-cover bg-center"
+          :style="{ backgroundImage: `url('${category.image}')` }"
+        />
         <div class="flex w-2/3 flex-col justify-between p-4">
           <div>
-            <h4 class="mb-1 text-lg font-bold text-white">{{ category.title }}</h4>
+            <h4 class="mb-1 text-lg font-bold text-white">
+              {{ category.title }}
+            </h4>
             <div class="flex flex-wrap gap-2">
               <span
                 v-for="feature in category.features"
@@ -51,7 +59,8 @@ type Category = {
 const categories: Category[] = [
   {
     title: "Papel Kraft",
-    description: "Ideal para embalaje industrial, bolsas y protección de mercadería.",
+    description:
+      "Ideal para embalaje industrial, bolsas y protección de mercadería.",
     image: kraftImage,
     features: ["60-120 gr/m²", "Alta Resistencia"],
   },
