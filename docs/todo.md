@@ -11,6 +11,10 @@
 - Deploy automático: solo `main` hacia producción.
 - El workflow `CD / SSH` requiere `environment` `production` y variables/secrets de deploy SSH documentados en `README.md`.
 - Se incorporó `.env.example` con variables de deploy SSH y `.env` local ignorado por git para configuración operativa.
+- El vhost `unionpapeleraplatense.com.ar` publica desde `/home/papelera/public_html`.
+- `madygraf.com` publica desde `/home/i6000695/public_html` y contiene WordPress.
+- El deploy erróneo en `/opt/apache/htdocs` fue revertido con backup en `/root/backup-wrong-upp-deploy-2026-03-02-153419`.
+- Variables de `production` corregidas: `DEPLOY_REMOTE_DIR=/home/papelera/public_html` y `DEPLOY_HEALTHCHECK_URL=https://unionpapeleraplatense.com.ar/`.
 - Topología de deploy v1: un único target (producción).
 - La landing base tiene estas secciones:
   - Header sticky.

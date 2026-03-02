@@ -102,3 +102,6 @@ Recomendación final:
 - Resuelta: el contenido de v1 será estático en código.
 - Resuelta: se mantienen temporalmente branding, paleta e imágenes de `example.html`.
 - Resuelta: deploy automático por SSH solo desde `main` a producción (single target).
+- Pendiente: confirmar política de despliegue sobre `/home/papelera/public_html` con `rsync --delete`:
+  - si se permite sobreescritura total del `DocumentRoot`;
+  - o si se exige despliegue en subdirectorio + cambio controlado de vhost/symlink.

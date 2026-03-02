@@ -64,9 +64,21 @@ El deploy está configurado para:
 
 ### Variables requeridas
 
-- `DEPLOY_REMOTE_DIR`: directorio remoto absoluto donde se sincroniza `dist/` (ejemplo: `/var/www/upp-www`).
+- `DEPLOY_REMOTE_DIR`: directorio remoto absoluto donde se sincroniza `dist/` (ejemplo operativo actual: `/home/papelera/public_html`).
 
 ### Variables opcionales
 
 - `DEPLOY_SSH_PORT` (default: `22`).
 - `DEPLOY_HEALTHCHECK_URL` (si se define, el workflow falla si no responde con código HTTP exitoso).
+
+### Estado operativo confirmado en VPS (2026-03-02)
+
+- `DocumentRoot` del vhost de UPP (`unionpapeleraplatense.com.ar`): `/home/papelera/public_html`.
+- `DocumentRoot` de `madygraf.com`: `/home/i6000695/public_html` (sitio WordPress existente).
+- `DocumentRoot` por defecto de IP (`http://200.58.103.24/`): `/opt/apache/htdocs` (no usar como target de deploy para UPP).
+
+Incidente registrado:
+
+- Un deploy de prueba cayó en `/opt/apache/htdocs` y fue retirado inmediatamente.
+- Backup de rollback: `/root/backup-wrong-upp-deploy-2026-03-02-153419`.
+- Variables de `production` corregidas: `DEPLOY_REMOTE_DIR=/home/papelera/public_html` y `DEPLOY_HEALTHCHECK_URL=https://unionpapeleraplatense.com.ar/`.
