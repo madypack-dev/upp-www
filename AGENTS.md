@@ -5,7 +5,7 @@ Guía de trabajo para agentes y colaboradores de este repositorio.
 ## Alcance y referencia
 
 - Stack objetivo: Vue + TypeScript + Tailwind.
-- Fuente de verdad visual inicial: `example.html`.
+- Fuente de verdad visual inicial: implementación Vue en `src/views` (migrada desde referencia HTML inicial).
 
 ## Flujo obligatorio
 

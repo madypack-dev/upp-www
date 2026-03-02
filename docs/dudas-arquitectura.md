@@ -25,7 +25,7 @@ Opciones:
   - Pros: versión actual con mejoras de performance.
   - Contras: cambios de configuración respecto a v3 que pueden agregar fricción en arranque.
 - Opción B: Tailwind v3.4.x.
-  - Pros: configuración muy estable para migrar rápidamente desde el `tailwind.config` de `example.html`.
+  - Pros: configuración muy estable para migrar rápidamente desde el `tailwind.config` de la referencia HTML inicial.
   - Contras: no parte de la versión más nueva.
 
 Recomendación final:
@@ -51,7 +51,7 @@ Recomendación final:
 
 Opciones:
 
-- Opción A: mantener URLs remotas de `example.html`.
+- Opción A: mantener URLs remotas de la referencia HTML inicial.
   - Pros: cero trabajo inicial.
   - Contras: riesgo de rotura por dependencia externa/hotlinking.
 - Opción B: descargar y versionar imágenes en el repo.
@@ -100,7 +100,7 @@ Recomendación final:
 - Resuelta: para v1 se implementa MVP SPA.
 - Resuelta: contacto publicado = +54 9 11 2693-5682.
 - Resuelta: el contenido de v1 será estático en código.
-- Resuelta: se mantienen temporalmente branding, paleta e imágenes de `example.html`.
+- Resuelta: se mantienen temporalmente branding, paleta e imágenes de la referencia inicial migrada.
 - Resuelta: deploy automático por SSH solo desde `main` a producción (single target).
 - Pendiente: confirmar política de despliegue sobre `/home/papelera/public_html` con `rsync --delete`:
   - si se permite sobreescritura total del `DocumentRoot`;

@@ -1,6 +1,6 @@
 # UPP WWW
 
-Proyecto web de UPP usando Vue + TypeScript + Tailwind, tomando como referencia visual y de contenido el archivo [`example.html`](./example.html).
+Proyecto web de UPP usando Vue + TypeScript + Tailwind, tomando como referencia visual y de contenido una referencia HTML inicial ya migrada al código Vue.
 
 ## Estado
 
@@ -12,7 +12,7 @@ Proyecto web de UPP usando Vue + TypeScript + Tailwind, tomando como referencia 
 
 ## Objetivo inicial (confirmado)
 
-Construir una landing responsive que replique la experiencia base de `example.html`:
+Construir una landing responsive que replique la experiencia base de la referencia inicial:
 
 - Header sticky.
 - Hero principal.
@@ -27,7 +27,7 @@ Construir una landing responsive que replique la experiencia base de `example.ht
 - Tailwind CSS (con tokens visuales equivalentes a la referencia)
 - Arquitectura de v1: MVP SPA
 - Fuente de contenido v1: estático en código
-- Branding v1: temporalmente igual a `example.html`
+- Branding v1: temporalmente igual a la referencia inicial migrada
 
 ## Desarrollo local
 
