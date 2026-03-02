@@ -21,6 +21,15 @@
   - **Archivos:** `.github/workflows/ci-quality.yml`
   - **Verificación:** Step ejecuta `npm audit --audit-level=moderate` ✓
 
+- [x] **2026-03-02 | [HIGH]** Resolver vulnerabilidades de dependencias (esbuild + vite)
+  - **Cambio:** Actualizado vite 5.4.8 → 7.3.1, @vitejs/plugin-vue 5.2.4 (compatible)
+  - **Archivos:** `package.json`, `package-lock.json`
+  - **Riesgo Resuelto:** esbuild <=0.24.2 (GHSA-67mh-4wv8-2f99) SSRF vulnerability
+  - **Verificación:** 
+    - `npm audit --audit-level=moderate` → 0 vulnerabilities ✓
+    - `npm run build` → Success (vite 7.3.1) ✓
+    - `npm run lint` → 0 errors ✓
+
 ---
 
 ## P1 - Calidad (Completadas)
