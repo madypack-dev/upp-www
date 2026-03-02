@@ -44,24 +44,29 @@ npm run build
 
 ## Deploy (GitHub Actions + SSH)
 
-El deploy automático está configurado para:
+El deploy está configurado para:
 
-- Ejecutarse solo en `main` (producción).
-- Correr después de `CI / Quality` exitoso en `push`.
+- Ejecutarse automáticamente en `push` a `main` (producción) tras `CI / Quality` exitoso.
+- Permitir ejecución manual (`workflow_dispatch`) solo desde `main`.
 - Publicar `dist/` por SSH con `rsync`.
+
+### Configuración de GitHub (obligatoria)
+
+1. Crear el environment `production` en el repositorio.
+2. Cargar secrets y variables en ese environment (recomendado) o a nivel repositorio.
 
 ### Secrets requeridos
 
-- `DEPLOY_SSH_HOST`
-- `DEPLOY_SSH_USER`
-- `DEPLOY_SSH_PRIVATE_KEY`
-- `DEPLOY_SSH_KNOWN_HOSTS`
+- `DEPLOY_SSH_HOST`: host/IP del servidor destino SSH (ejemplo: `200.58.103.24`).
+- `DEPLOY_SSH_USER`: usuario remoto con permisos de escritura en `DEPLOY_REMOTE_DIR`.
+- `DEPLOY_SSH_PRIVATE_KEY`: clave privada OpenSSH del usuario remoto (bloque completo multilínea).
+- `DEPLOY_SSH_KNOWN_HOSTS`: entrada de host verificado (`ssh-keyscan -H -p <puerto> <host>`).
 
 ### Variables requeridas
 
-- `DEPLOY_REMOTE_DIR`
+- `DEPLOY_REMOTE_DIR`: directorio remoto absoluto donde se sincroniza `dist/` (ejemplo: `/var/www/upp-www`).
 
 ### Variables opcionales
 
-- `DEPLOY_SSH_PORT` (default: `22`)
-- `DEPLOY_HEALTHCHECK_URL` (si se define, el workflow falla si no responde)
+- `DEPLOY_SSH_PORT` (default: `22`).
+- `DEPLOY_HEALTHCHECK_URL` (si se define, el workflow falla si no responde con código HTTP exitoso).

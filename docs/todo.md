@@ -9,6 +9,7 @@
 - Las imágenes de hero y categorías se versionan localmente en `src/assets/images`.
 - Deploy v1: SSH + `rsync` desde GitHub Actions.
 - Deploy automático: solo `main` hacia producción.
+- El workflow `CD / SSH` requiere `environment` `production` y variables/secrets de deploy SSH documentados en `README.md`.
 - Topología de deploy v1: un único target (producción).
 - La landing base tiene estas secciones:
   - Header sticky.
