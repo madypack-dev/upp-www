@@ -27,12 +27,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import MaterialSymbolIcon from "./icons/MaterialSymbolIcon.vue";
-import { contact } from "../config/contact";
+import { computed } from 'vue';
+import MaterialSymbolIcon from './icons/MaterialSymbolIcon.vue';
+import { usePhoneFormatter } from '../composables/usePhoneFormatter';
+import { contact } from '../config/contact';
 
-const normalizeDigits = (value: string) => value.replace(/\D/g, "");
-const normalizeTel = (value: string) => value.replace(/[^\d+]/g, "");
+const { normalizeDigits, normalizeTel } = usePhoneFormatter();
 
 const whatsappHref = computed(() => `https://wa.me/${normalizeDigits(contact.whatsappNumber)}`);
 const phoneHref = computed(() => `tel:${normalizeTel(contact.phoneNumber)}`);
