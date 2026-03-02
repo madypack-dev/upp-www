@@ -49,6 +49,7 @@ El deploy está configurado para:
 - Ejecutarse automáticamente en `push` a `main` (producción) tras `CI / Quality` exitoso.
 - Permitir ejecución manual (`workflow_dispatch`) solo desde `main`.
 - Publicar `dist/` por SSH con `rsync`.
+- Política operativa v1: deploy directo al `DocumentRoot` de UPP con `rsync --delete` (directorio gestionado por CI/CD).
 
 ### Configuración de GitHub (obligatoria)
 

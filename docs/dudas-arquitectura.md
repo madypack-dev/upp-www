@@ -102,6 +102,5 @@ Recomendación final:
 - Resuelta: el contenido de v1 será estático en código.
 - Resuelta: se mantienen temporalmente branding, paleta e imágenes de la referencia inicial migrada.
 - Resuelta: deploy automático por SSH solo desde `main` a producción (single target).
-- Pendiente: confirmar política de despliegue sobre `/home/papelera/public_html` con `rsync --delete`:
-  - si se permite sobreescritura total del `DocumentRoot`;
-  - o si se exige despliegue en subdirectorio + cambio controlado de vhost/symlink.
+- Resuelta: política de despliegue v1 = `DocumentRoot` directo (`/home/papelera/public_html`) con `rsync --delete`.
+- Resuelta: el `DocumentRoot` de UPP queda gestionado por CI/CD; no dejar archivos manuales persistentes fuera de `dist/` en ese directorio.

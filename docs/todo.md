@@ -16,6 +16,7 @@
 - El deploy erróneo en `/opt/apache/htdocs` fue revertido con backup en `/root/backup-wrong-upp-deploy-2026-03-02-153419`.
 - Variables de `production` corregidas: `DEPLOY_REMOTE_DIR=/home/papelera/public_html` y `DEPLOY_HEALTHCHECK_URL=https://unionpapeleraplatense.com.ar/`.
 - Topología de deploy v1: un único target (producción).
+- Política de deploy v1 confirmada: `DocumentRoot` directo (`/home/papelera/public_html`) con `rsync --delete` y carpeta gestionada por CI/CD.
 - Se eliminó el archivo de referencia HTML inicial del repo al confirmar que no participa del build/runtime.
 - La landing base tiene estas secciones:
   - Header sticky.
