@@ -138,3 +138,4 @@ Recomendación final:
 - Resuelta: el `DocumentRoot` de UPP queda gestionado por CI/CD; no dejar archivos manuales persistentes fuera de `dist/` en ese directorio.
 - Resuelta: hardening del workflow con guardrails explícitos de producción (`DEPLOY_REMOTE_DIR` y `DEPLOY_HEALTHCHECK_URL`) y depuración opcional (`DEPLOY_DEBUG`).
 - Pendiente: definir si el mapa debe apuntar a una coordenada exacta/pin de negocio (URL de Google Maps oficial) o mantenerse como búsqueda general de Ringuelet.
+- Pendiente: definir si se crearán secciones explícitas para `Industrias / Usos` y `Sostenibilidad / Calidad` (hoy no existen bloques con esos IDs en la landing).

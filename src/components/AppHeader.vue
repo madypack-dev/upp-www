@@ -83,7 +83,21 @@
             class="rounded-lg px-4 py-3 text-lg font-semibold text-slate-200 transition hover:bg-white/10 hover:text-primary"
             @click="isMenuOpen = false"
           >
-            Productos
+            Productos / Soluciones
+          </a>
+          <a
+            href="#industrias-usos"
+            class="rounded-lg px-4 py-3 text-lg font-semibold text-slate-200 transition hover:bg-white/10 hover:text-primary"
+            @click="isMenuOpen = false"
+          >
+            Industrias / Usos
+          </a>
+          <a
+            href="#sostenibilidad-calidad"
+            class="rounded-lg px-4 py-3 text-lg font-semibold text-slate-200 transition hover:bg-white/10 hover:text-primary"
+            @click="isMenuOpen = false"
+          >
+            Sostenibilidad / Calidad
           </a>
           <a
             href="#quienes-somos"
@@ -93,17 +107,18 @@
             ¿Quiénes somos?
           </a>
           <a
-            href="#ubicacion"
+            :href="whatsappHref"
             class="rounded-lg px-4 py-3 text-lg font-semibold text-slate-200 transition hover:bg-white/10 hover:text-primary"
             @click="isMenuOpen = false"
           >
-            ¿Dónde estamos?
+            Contacto
           </a>
           <a
-            :href="whatsappHref"
-            class="rounded-lg px-4 py-3 text-lg font-semibold text-slate-200 transition hover:bg-white/10 hover:text-primary"
+            href="#ubicacion"
+            class="-mt-1 ml-4 rounded-lg px-4 py-2 text-base font-medium text-slate-300 transition hover:bg-white/10 hover:text-primary"
+            @click="isMenuOpen = false"
           >
-            Contacto
+            ¿Dónde estamos?
           </a>
 
           <!-- CTA destacado -->

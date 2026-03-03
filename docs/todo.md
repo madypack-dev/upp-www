@@ -130,6 +130,11 @@ Ejecución de auditoría de seguridad, arquitectura, código y DevOps. Implement
 - [x] Tokens visuales definidos y en uso: colores (primary, background), tipografía, efectos (glass-effect)
 - [x] En la sección de ubicación se removió la mención de “logística propia” y se incorporó un mapa embebido de Google Maps para Ringuelet.
 - [x] Se agregó compatibilidad de navegación para `#nosotros`/`#quienes-somos` y aliases por pathname `/nosotros`/`/quienes-somos` en el arranque de la SPA.
+- [x] Menú mobile reordenado: `Productos / Soluciones` → `¿Quiénes somos?` → `Contacto`, con `¿Dónde estamos?` como sub-item de contacto y CTA `Cotizar ahora` fijo al final.
+- [x] Secciones nuevas implementadas con anchors: `Industrias / Usos` (`#industrias-usos`) y `Sostenibilidad / Calidad` (`#sostenibilidad-calidad`), y menú actualizado al orden final solicitado.
+- [x] Aliases de pathname agregados para navegación directa: `/industrias-usos` y `/sostenibilidad-calidad` (redirigen a sus hashes en la SPA).
+- [x] Aliases adicionales agregados para navegación homogénea: `/productos` y `/ubicacion` (redirigen a `#productos` y `#ubicacion`).
+- [x] Se agregaron aliases alternativos de URL para robustez (`/donde-estamos`, `/dondeestamos`, `/industrias`, `/quienes`, `/quienes_somos`, `/sostenibilidad`).
 
 ---
 
