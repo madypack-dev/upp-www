@@ -1,34 +1,211 @@
 <template>
-  <section id="nosotros" class="p-4 pt-5 md:pt-6">
+  <section id="nosotros" class="px-4 py-5 md:py-6">
     <div
-      class="relative flex h-80 w-full flex-col justify-end overflow-hidden rounded-xl border border-primary/20 bg-slate-800 p-6 md:h-[30rem] md:p-8"
+      class="relative overflow-hidden rounded-3xl"
+      @mouseenter="isHovering = true"
+      @mouseleave="isHovering = false"
+      @keydown.left="previousSlide"
+      @keydown.right="nextSlide"
+      @touchstart="onTouchStart"
+      @touchend="onTouchEnd"
+      tabindex="0"
+      role="region"
+      aria-label="Carrusel de productos Papel Onda"
     >
+      <!-- Imágenes con Transition Fade -->
+      <Transition
+        enter-active-class="transition-opacity duration-800"
+        leave-active-class="transition-opacity duration-800"
+        enter-from-class="opacity-0"
+        leave-to-class="opacity-0"
+      >
+        <img
+          :key="currentIndex"
+          :src="heroImages[currentIndex]"
+          alt="Papel Onda - Producto"
+          class="block h-80 w-full object-cover md:h-[28rem] lg:h-[32rem]"
+          style="object-position: 65% 50%"
+        />
+      </Transition>
+
+      <!-- Gradiente overlay responsivo -->
       <div
-        class="absolute inset-0 z-10 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent"
+        class="absolute inset-0 pointer-events-none hidden md:block"
+        style="
+          background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.25) 40%,
+            transparent
+          );
+        "
       />
       <div
-        class="absolute inset-0 bg-cover bg-center"
-        :style="{ backgroundImage: `url('${heroImage}')` }"
+        class="absolute inset-0 pointer-events-none md:hidden"
+        style="
+          background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.35) 40%,
+            transparent
+          );
+        "
       />
-      <div class="relative z-20">
-        <span
-          class="mb-3 inline-block rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-background-dark"
+
+      <!-- Contenedor de texto overlay -->
+      <div
+        class="absolute inset-0 z-10 flex flex-col justify-end md:items-center md:justify-center md:pt-0"
+      >
+        <div
+          class="px-6 pb-8 md:px-10 md:pb-0 lg:px-14 md:max-w-[640px] md:w-full md:text-left"
         >
-          Venta Directa de Fábrica
-        </span>
-        <h2
-          class="mb-2 max-w-3xl text-3xl font-bold leading-tight text-white md:text-5xl"
-        >
-          Bobinas de Papel Onda e Higiene 100% Reciclado
-        </h2>
-        <p class="max-w-md text-sm text-slate-200 md:text-base">
-          Soluciones industriales sostenibles para el mercado B2B y mayorista.
-        </p>
+          <span
+            class="mb-3 inline-block rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-background-dark drop-shadow-sm"
+          >
+            Venta Directa de Fábrica
+          </span>
+
+          <h2
+            class="mb-3 text-3xl font-black leading-tight text-white drop-shadow-sm sm:text-4xl lg:text-5xl"
+          >
+            Bobinas de Papel Onda e Higiene 100% Reciclado
+          </h2>
+
+          <p
+            class="text-sm text-slate-100 opacity-90 drop-shadow-sm sm:text-base md:max-w-lg"
+          >
+            Soluciones industriales sostenibles para el mercado B2B y mayorista.
+          </p>
+        </div>
       </div>
+
+      <!-- Dots indicadores -->
+      <div
+        class="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 md:bottom-6"
+      >
+        <button
+          v-for="(_, index) in heroImages"
+          :key="index"
+          type="button"
+          :class="[
+            'rounded-full transition-all duration-300',
+            currentIndex === index
+              ? 'h-2 w-6 bg-primary'
+              : 'h-2 w-2 bg-white/40 hover:bg-white/60',
+          ]"
+          :aria-label="`Ir a slide ${index + 1}`"
+          @click="currentIndex = index"
+        />
+      </div>
+
+      <!-- Navegación con flechas (desktop only) -->
+      <button
+        type="button"
+        class="absolute left-4 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center rounded-full bg-white/10 p-2 transition hover:bg-white/20 md:flex"
+        aria-label="Slide anterior"
+        @click="previousSlide"
+      >
+        <svg
+          class="size-6 fill-white"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        class="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center rounded-full bg-white/10 p-2 transition hover:bg-white/20 md:flex"
+        aria-label="Slide siguiente"
+        @click="nextSlide"
+      >
+        <svg
+          class="size-6 fill-white"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+        </svg>
+      </button>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import heroImage from "../assets/images/hero.png";
+import { computed, ref, watch, onMounted, onBeforeUnmount } from "vue";
+import heroOndaImage1 from "../assets/images/hero-onda-1.png";
+import heroOndaImage2 from "../assets/images/hero-onda-2.png";
+
+const heroImages = [heroOndaImage1, heroOndaImage2];
+const currentIndex = ref(0);
+const isHovering = ref(false);
+const touchStartX = ref(0);
+let autoAdvanceInterval: ReturnType<typeof setInterval> | null = null;
+
+const nextSlide = () => {
+  currentIndex.value = (currentIndex.value + 1) % heroImages.length;
+};
+
+const previousSlide = () => {
+  currentIndex.value =
+    (currentIndex.value - 1 + heroImages.length) % heroImages.length;
+};
+
+// Touch handlers para swipe en mobile
+const onTouchStart = (e: TouchEvent) => {
+  touchStartX.value = e.touches[0].clientX;
+};
+
+const onTouchEnd = (e: TouchEvent) => {
+  const touchEndX = e.changedTouches[0].clientX;
+  const swipeDistance = touchStartX.value - touchEndX;
+  const swipeThreshold = 50; // pixels
+
+  if (Math.abs(swipeDistance) > swipeThreshold) {
+    if (swipeDistance > 0) {
+      // Desliz hacia la izquierda → siguiente slide
+      nextSlide();
+    } else {
+      // Desliz hacia la derecha → slide anterior
+      previousSlide();
+    }
+  }
+};
+
+// Auto-advance cada 6 segundos
+const startAutoAdvance = () => {
+  if (autoAdvanceInterval) clearInterval(autoAdvanceInterval);
+  autoAdvanceInterval = setInterval(() => {
+    if (!isHovering.value) {
+      nextSlide();
+    }
+  }, 6000);
+};
+
+const stopAutoAdvance = () => {
+  if (autoAdvanceInterval) {
+    clearInterval(autoAdvanceInterval);
+    autoAdvanceInterval = null;
+  }
+};
+
+onMounted(() => {
+  startAutoAdvance();
+});
+
+onBeforeUnmount(() => {
+  stopAutoAdvance();
+});
+
+// Reiniciar auto-advance cuando deja de hacer hover
+watch(
+  () => isHovering.value,
+  (newVal) => {
+    if (!newVal) {
+      stopAutoAdvance();
+      startAutoAdvance();
+    }
+  },
+);
 </script>
