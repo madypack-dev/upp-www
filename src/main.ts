@@ -2,23 +2,9 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import "@fontsource/space-grotesk/latin.css";
 import "./style.css";
+import { resolveSectionHashFromPathname } from "./utils/sectionRouting";
 
-const sectionPathToHash: Record<string, string> = {
-  "/donde-estamos": "#ubicacion",
-  "/dondeestamos": "#ubicacion",
-  "/industrias-usos": "#industrias-usos",
-  "/industrias": "#industrias-usos",
-  "/nosotros": "#nosotros",
-  "/productos": "#productos",
-  "/quienes": "#quienes-somos",
-  "/quienes_somos": "#quienes-somos",
-  "/quienes-somos": "#quienes-somos",
-  "/sostenibilidad": "#sostenibilidad-calidad",
-  "/sostenibilidad-calidad": "#sostenibilidad-calidad",
-  "/ubicacion": "#ubicacion",
-};
-
-const targetHash = sectionPathToHash[window.location.pathname];
+const targetHash = resolveSectionHashFromPathname(window.location.pathname);
 
 if (targetHash) {
   window.history.replaceState({}, "", `/${targetHash}`);

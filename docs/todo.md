@@ -135,6 +135,8 @@ Ejecución de auditoría de seguridad, arquitectura, código y DevOps. Implement
 - [x] Aliases de pathname agregados para navegación directa: `/industrias-usos` y `/sostenibilidad-calidad` (redirigen a sus hashes en la SPA).
 - [x] Aliases adicionales agregados para navegación homogénea: `/productos` y `/ubicacion` (redirigen a `#productos` y `#ubicacion`).
 - [x] Se agregaron aliases alternativos de URL para robustez (`/donde-estamos`, `/dondeestamos`, `/industrias`, `/quienes`, `/quienes_somos`, `/sostenibilidad`).
+- [x] Se normaliza `pathname` antes del mapeo (minúsculas + remoción de trailing slash) para soportar variantes como `/Quienes-Somos/`.
+- [x] Se extrajo el mapeo de rutas a `src/utils/sectionRouting.ts` y se agregaron tests unitarios en `src/utils/sectionRouting.test.ts`.
 
 ---
 
