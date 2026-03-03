@@ -1,3 +1,7 @@
+/*
+Path: src/content/siteContent.ts
+*/
+
 import type { SiteContent } from "../types/domain";
 
 export const siteContent = {
