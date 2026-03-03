@@ -1,5 +1,6 @@
 <template>
-  <section id="nosotros" class="px-4 py-5 md:py-6">
+  <section id="quienes-somos" class="px-4 py-5 md:py-6">
+    <span id="nosotros" class="sr-only" aria-hidden="true"></span>
     <div
       class="relative overflow-hidden rounded-3xl"
       @mouseenter="isHovering = true"

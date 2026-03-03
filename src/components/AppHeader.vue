@@ -86,7 +86,7 @@
             Productos
           </a>
           <a
-            href="#nosotros"
+            href="#quienes-somos"
             class="rounded-lg px-4 py-3 text-lg font-semibold text-slate-200 transition hover:bg-white/10 hover:text-primary"
             @click="isMenuOpen = false"
           >

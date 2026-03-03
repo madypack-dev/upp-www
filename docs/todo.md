@@ -129,6 +129,7 @@ Ejecución de auditoría de seguridad, arquitectura, código y DevOps. Implement
 - [x] La landing base implementada con componentes modulares: Header, Hero, StatsBar, ProductCategories, LocationSection, FloatingActions
 - [x] Tokens visuales definidos y en uso: colores (primary, background), tipografía, efectos (glass-effect)
 - [x] En la sección de ubicación se removió la mención de “logística propia” y se incorporó un mapa embebido de Google Maps para Ringuelet.
+- [x] Se agregó compatibilidad de navegación para `#nosotros`/`#quienes-somos` y aliases por pathname `/nosotros`/`/quienes-somos` en el arranque de la SPA.
 
 ---
 
