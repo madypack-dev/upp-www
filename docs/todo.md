@@ -56,11 +56,35 @@ Las tareas realizadas fueron movidas a `docs/todo.done.md`.
   - Archivos creados: 9 nuevos + 1 composable, ~820 líneas
   - Beneficios: Extensible a API/DB/FireBase sin modificar componentes
 
-## P3 - Tests / DevOps
+## P3 - Contact / Conversión
+
+### WhatsApp Strategy - ELEGIDA: OPCIÓN A (Manual)
+
+- [x] Estrategia WhatsApp definida: **MANUAL** (Respuesta humana sin automatización)
+  - Quién responde: Equipo de UPP (definir persona/turno)
+  - Al recibir WhatsApp: Alguien lee y responde manualmente
+  - Sin bot, sin webhook, sin CRM automation
+  - Ventaja: Simple, sin fricción, control total
+  - Riesgo: Sin tracking, sin data, escalabilidad limitada
+  - Documentación: [docs/whatsapp-manual-setup.md](./whatsapp-manual-setup.md) (guía completa)
+  - Decisión: [docs/whatsapp-decision.md](./whatsapp-decision.md) (análisis + plan B/C/D)
+
+### Tareas P3 (Bajo nivel) - PRÓXIMAS
+
+- [ ] **ESTA SEMANA**: Asignar responsable de WhatsApp (persona o rotación)
+- [ ] **ESTA SEMANA**: Definir SLA de respuesta (recomendación: 1 hora laboral)
+- [ ] **Esta semana**: Verificar número +5492214502250 existe y funciona
+- [ ] **Esta semana**: Testear FloatingAction: Click → abre WhatsApp?
+- [ ] **Esta semana**: Guardar templates de respuesta en doc compartido
+- [ ] Configurar notificaciones de WhatsApp en teléfono responsable
+- [ ] Crear Google Sheet para tracking (fecha | mensaje | respuesta | outcome)
+- [ ] Entrenamiento: Cómo responder personalizando templates
+- [ ] Monitorear primeros 7 días: Volumen, tiempos, conversión
+- [ ] Revisión al mes 1: Decidir si escalar a Opción B
+
+## P4 - Tests / DevOps
 
 - Sin pendientes activos.
-
----
 
 ## Referencias
 

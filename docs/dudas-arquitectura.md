@@ -184,3 +184,33 @@ Recomendación final:
   - Guía de setup: [docs/gmb-setup.md](./gmb-setup.md)
   - Status actual: **Pendiente creación manual del perfil GMB**
   - NAP consistency: documentado y listo para sincronizar
+
+### WhatsApp / Contact Conversion - DECISIÓN: OPCIÓN A (MANUAL)
+
+- ✅ **Estrategia elegida: OPCIÓN A - MANUAL**
+  - Sin automatización, sin CRM, sin webhook
+  - Alguien del equipo UPP responde manualmente los mensajes
+  - Ventaja: MVP simple, $0/mes, control total, aprender comportamiento real
+  - Riesgo: Sin logs centralizados, escalabilidad limitada si > 50 mensajes/mes
+  - SLA: Definir interno (recomendación: 1 hora en horario laboral)
+  - Responsable: **A DEFINIR - Nombre de persona o equipo**
+  - Plan de escalabilidad: Monitorear volumen; si crece mucho (50+ msg/mes), migrar a Opción B (auto-response + email)
+  - Guía de implementación: [docs/whatsapp-manual-setup.md](./whatsapp-manual-setup.md)
+  - Templates de respuesta: Documentados (5 tipos: confirmación, técnica, ubicación, presupuesto, follow-up)
+  - Métricas a trackear: Cantidad/semana, tiempo respuesta promedio, tasa conversión, tipos de pregunta
+  - Checklist de setup: 30 minutos
+  - Próxima revisión: 2026-04-03 (después de 1 mes de datos)
+
+**Resumen para equipo:**
+1. Visitante → Click WhatsApp → Abre app
+2. Escribe mensaje a UPP
+3. [RESPONSABLE] recibe en teléfono
+4. Lee y responde manualmente
+5. Conversación directa hasta venta o cierre
+
+**Próximos pasos:**
+- [ ] Definir responsable/turno
+- [ ] Establecer SLA
+- [ ] Verificar número es válido (sección 3.1 en guía)
+- [ ] Guardar templates (sección 3.3 en guía)
+- [ ] Monitorear métricas (Google Sheet simple)
