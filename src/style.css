@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     min-height: 100dvh;
     font-family: "Space Grotesk", sans-serif;

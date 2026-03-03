@@ -1,5 +1,5 @@
 <template>
-  <section class="mb-4 px-4">
+  <section id="ubicacion" class="mb-4 px-4">
     <div
       class="relative overflow-hidden rounded-xl bg-primary p-6 text-background-dark md:p-8"
     >

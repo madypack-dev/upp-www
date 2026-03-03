@@ -1,5 +1,5 @@
 <template>
-  <section class="mb-8 px-4">
+  <section id="productos" class="mb-8 px-4">
     <div class="mb-4 flex items-center justify-between gap-4">
       <h3 class="text-xl font-bold tracking-tight">Categorías de Productos</h3>
       <button

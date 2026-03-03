@@ -1,5 +1,5 @@
 <template>
-  <section class="p-4 pt-5 md:pt-6">
+  <section id="nosotros" class="p-4 pt-5 md:pt-6">
     <div
       class="relative flex h-80 w-full flex-col justify-end overflow-hidden rounded-xl border border-primary/20 bg-slate-800 p-6 md:h-[30rem] md:p-8"
     >
