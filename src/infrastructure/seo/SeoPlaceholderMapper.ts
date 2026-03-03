@@ -36,7 +36,6 @@ export class SeoPlaceholderMapper {
   ): SeoTransformationResult {
     let transformed = html;
     let replacedCount = 0;
-    const errors: string[] = [];
 
     try {
       // Para cada placeholder, crear regex y reemplazar

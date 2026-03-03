@@ -18,6 +18,7 @@ export class StaticContentProvider implements IContentProvider {
 
   // Accept both readonly and mutable content structures
   // Allow any object matching the structure (including readonly variants)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(content?: any) {
     // Deep copy ensures we have a fully mutable working copy
     // This handles both readonly and mutable inputs safely
@@ -84,6 +85,7 @@ export class StaticContentProvider implements IContentProvider {
  * Accepts any object matching SiteContentStructure shape (including readonly variants)
  */
 export function createStaticContentProvider(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   content?: any,
 ): StaticContentProvider {
   return new StaticContentProvider(content);

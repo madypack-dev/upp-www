@@ -7,7 +7,6 @@
 
 import type { ISeoConfig } from "../../domain/seo/ISeoConfig";
 import type { ISeoTransformer } from "../../domain/seo/ISeoTransformer";
-import type { SeoTransformationResult } from "../../domain/seo/SeoPlaceholder.types";
 
 export interface SeoHtmlTransformationRequest {
   html: string;

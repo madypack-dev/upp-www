@@ -2,6 +2,7 @@
  * Tests: Content Loader
  * Caso de uso: cargar contenido con validación automática
  */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { ContentLoader } from "../../application/content/ContentLoader";

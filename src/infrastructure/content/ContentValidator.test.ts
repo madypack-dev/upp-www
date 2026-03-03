@@ -2,6 +2,7 @@
  * Tests: Content Validator
  * Validar estructura, tipos y campos requeridos de contenido
  */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { describe, it, expect, beforeEach } from "vitest";
 import { ContentValidator } from "../../infrastructure/content/ContentValidator";
