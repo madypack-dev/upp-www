@@ -1,21 +1,26 @@
 <template>
   <section id="ubicacion" class="mb-4 px-4">
     <div
-      class="relative overflow-hidden rounded-xl bg-primary p-6 text-background-dark md:p-8"
+      class="relative overflow-hidden rounded-xl border border-primary/20 bg-background-light p-6 text-slate-900 md:p-8 dark:bg-slate-900 dark:text-slate-100"
     >
-      <div class="absolute -bottom-10 -right-10 rotate-12 opacity-20">
-        <MaterialSymbolIcon name="local_shipping" class="size-[120px]" />
-      </div>
       <div class="relative z-10">
         <h4 class="mb-2 text-xl font-bold">Entregas en Ringuelet</h4>
-        <p class="mb-4 font-medium text-background-dark/80">
-          Logística propia para La Plata y GBA. Consulta por envíos al interior.
-        </p>
         <div class="flex items-center gap-2">
           <MaterialSymbolIcon name="location_on" class="size-6" />
           <span class="font-bold underline"
             >Calle 508 e/ 16 y 17, Ringuelet</span
           >
+        </div>
+        <div
+          class="mt-4 overflow-hidden rounded-lg border border-background-dark/20"
+        >
+          <iframe
+            title="Mapa de ubicación en Ringuelet"
+            src="https://www.google.com/maps?q=Calle+508+e%2F+16+y+17,+Ringuelet,+La+Plata&output=embed"
+            class="h-56 w-full md:h-72"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </div>
     </div>

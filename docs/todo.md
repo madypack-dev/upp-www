@@ -128,6 +128,7 @@ Ejecución de auditoría de seguridad, arquitectura, código y DevOps. Implement
 - [x] Tipografía `Space Grotesk` local por `@fontsource` y set de íconos migrado a SVG local por componente.
 - [x] La landing base implementada con componentes modulares: Header, Hero, StatsBar, ProductCategories, LocationSection, FloatingActions
 - [x] Tokens visuales definidos y en uso: colores (primary, background), tipografía, efectos (glass-effect)
+- [x] En la sección de ubicación se removió la mención de “logística propia” y se incorporó un mapa embebido de Google Maps para Ringuelet.
 
 ---
 
