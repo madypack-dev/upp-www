@@ -133,7 +133,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch, onMounted, onBeforeUnmount } from "vue";
+import { ref, watch, onMounted, onBeforeUnmount } from "vue";
 import heroOndaImage1 from "../assets/images/hero-onda-1.png";
 import heroOndaImage2 from "../assets/images/hero-onda-2.png";
 
