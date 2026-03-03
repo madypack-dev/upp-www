@@ -14,7 +14,7 @@
           <p
             class="text-[10px] font-semibold uppercase tracking-widest text-primary"
           >
-            Unión Papelera
+            Unión Papelera Platense
           </p>
         </div>
       </div>
@@ -129,12 +129,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, defineModel } from "vue";
 import logoImage from "../assets/images/logo.jpg";
 import { contact } from "../config/contact";
 import MaterialSymbolIcon from "./icons/MaterialSymbolIcon.vue";
 
-const isMenuOpen = ref(false);
+const isMenuOpen = defineModel<boolean>();
 
 const whatsappHref = computed(() => {
   const phone = contact.whatsappNumber.replace(/\D/g, "");

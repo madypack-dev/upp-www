@@ -1,6 +1,9 @@
 <template>
   <div
-    class="glass-effect fixed bottom-0 left-0 right-0 z-50 border-t border-primary/20 p-4 pb-8 md:pb-6"
+    :class="[
+      containerClasses,
+      'glass-effect fixed bottom-0 left-0 right-0 z-50 border-t border-primary/20 p-4 pb-8 md:pb-6',
+    ]"
   >
     <div class="mx-auto flex w-full max-w-6xl gap-3 md:max-w-xl">
       <a
@@ -39,7 +42,19 @@ import MaterialSymbolIcon from "./icons/MaterialSymbolIcon.vue";
 import { usePhoneFormatter } from "../composables/usePhoneFormatter";
 import { contact } from "../config/contact";
 
+interface Props {
+  isMenuOpen?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  isMenuOpen: false,
+});
+
 const { normalizeDigits, normalizeTel } = usePhoneFormatter();
+
+const containerClasses = computed(() => ({
+  "md:hidden": props.isMenuOpen,
+}));
 
 const whatsappHref = computed(
   () => `https://wa.me/${normalizeDigits(contact.whatsappNumber)}`,
