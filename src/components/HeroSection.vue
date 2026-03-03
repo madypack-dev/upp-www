@@ -48,11 +48,11 @@
             {{ siteContent.hero.badge }}
           </span>
 
-          <h2
+          <h1
             class="mb-3 text-3xl font-black leading-tight text-white drop-shadow-sm sm:text-4xl lg:text-5xl"
           >
             {{ siteContent.hero.title }}
-          </h2>
+          </h1>
 
           <p
             class="text-sm text-slate-100 opacity-90 drop-shadow-sm sm:text-base md:max-w-lg"

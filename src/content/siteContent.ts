@@ -27,7 +27,7 @@ export const siteContent = {
     badge: "Venta Directa de Fábrica",
     title: "Bobinas de Papel Onda e Higiene 100% Reciclado",
     description:
-      "Soluciones industriales sostenibles para el mercado B2B y mayorista.",
+      "Fabricamos papel reciclado de alta calidad para cartón corrugado e higiene industrial. Soluciones B2B con entrega directa desde Ringuelet, La Plata.",
     prevSlideAria: "Slide anterior",
     nextSlideAria: "Slide siguiente",
     goToSlidePrefix: "Ir a slide",

@@ -1,0 +1,23 @@
+# Robots.txt for UPP - Unión Papelera Platense
+# Generated for SEO optimization
+
+# Allow all bots to crawl and index
+User-agent: *
+Allow: /
+
+# Specific rules for common bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Disallow bots that might harm performance
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://upp.ar/sitemap.xml

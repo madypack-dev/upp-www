@@ -137,5 +137,32 @@ Recomendación final:
 - Resuelta: política de despliegue v1 = `DocumentRoot` directo (`/home/papelera/public_html`) con `rsync --delete`.
 - Resuelta: el `DocumentRoot` de UPP queda gestionado por CI/CD; no dejar archivos manuales persistentes fuera de `dist/` en ese directorio.
 - Resuelta: hardening del workflow con guardrails explícitos de producción (`DEPLOY_REMOTE_DIR` y `DEPLOY_HEALTHCHECK_URL`) y depuración opcional (`DEPLOY_DEBUG`).
+
+### SEO - Dudas de implementación
+
+1. **Meta description y OG tags**: ¿Qué profundidad de social sharing se requiere? ¿Necesitamos imágenes específicas para LinkedIn/WhatsApp?
+
+2. **Schema JSON-LD**: ¿A cuál organización apuntar? ¿Solo LocalBusiness o también Product/Organization schema?
+
+3. **Palabras clave objetivo**: ¿Cuáles son los términos de búsqueda prioritarios en Argentina para el segmento B2B papelero?
+
+4. **Jerarquía de títulos**: ¿El hero debe ser h1 o mantener h2 acorde al flow semántico del sitio?
+
+5. **Internal linking**: ¿Hay planes para expandir a subpáginas o política de documentación? (actualmente es single-page)
+
+### GEO - Dudas de implementación
+
+1. **Google My Business**: ¿Crear perfil GMB para UPP en Ringuelet? ¿Verificamos la ubicación?
+
+2. **Horarios y servicios locales**: ¿Cuál es el horario de atención? ¿Ofrecen retiro en local?
+
+3. **Coordenadas exactas**: Ringuelet tiene coordenadas generales. ¿Usar ubicación exacta de planta o Centro de Distribución?
+
+4. **Domain .ar vs genérico**: ¿El sitio será exclusivamente para Argentina o es multiregional? (impacta hreflang)
+
+5. **Maps API key**: ¿Usar embedded maps sin costo o implementar API de Google Maps avanzada para analytics?
+
+### Dudas pendientes anteriores
+
 - Pendiente: definir si el mapa debe apuntar a una coordenada exacta/pin de negocio (URL de Google Maps oficial) o mantenerse como búsqueda general de Ringuelet.
 - Pendiente: definir si se crearán secciones explícitas para `Industrias / Usos` y `Sostenibilidad / Calidad` (hoy no existen bloques con esos IDs en la landing).
