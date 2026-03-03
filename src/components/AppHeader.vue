@@ -153,7 +153,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineModel, onBeforeUnmount, watch } from "vue";
+import { computed, onBeforeUnmount, watch } from "vue";
 import logoImage from "../assets/images/logo.jpg";
 import { siteContent } from "../content/siteContent";
 import { contact } from "../config/contact";
