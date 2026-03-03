@@ -31,6 +31,10 @@ Las tareas realizadas fueron movidas a `docs/todo.done.md`.
 ## P2 - Arquitectura
 
 - [x] Integrar contact info en siteContent.ts (eliminado contact.ts)
+- [x] Centralizar contenido EDITABLE en archivo único
+  - Creado: `src/config/copy.ts` (single source for all text/CTA)
+  - Refactorizado: `src/content/siteContent.ts` (ahora importa desde copy.ts)
+  - Documentación: `docs/editable-content-strategy.md` (multi-client guide)
 - [x] Extraer valores hardcodeados de index.html
   - Creado: src/config/seo.ts (centraliza toda config SEO)
   - Creado: Vite HTML Plugin (inyecta valores automáticamente)
@@ -42,6 +46,15 @@ Las tareas realizadas fueron movidas a `docs/todo.done.md`.
   - Infrastructure: `src/infrastructure/seo/` (implementaciones concretas)
   - Config: `src/config/seo.ts` (orquestación final)
   - Documentación: `docs/clean-architecture-seo.md`
+- [x] Aplicar Arquitectura Limpia + SOLID refactorización Content (siteContent.ts)
+  - Domain: `src/domain/content/` (interfaces IContentProvider, IContentValidator + tipos por sección)
+  - Application: `src/application/content/` + `src/application/ports/` (ContentLoader, SectionResolver, ContentPort)
+  - Infrastructure: `src/infrastructure/content/` (StaticContentProvider, ContentValidator)
+  - Config: `src/config/content.ts` (DI Container + exports)
+  - Composable: `src/composables/useContent.ts` (Vue 3 integration)
+  - Documentación: `docs/clean-architecture-content.md`
+  - Archivos creados: 9 nuevos + 1 composable, ~820 líneas
+  - Beneficios: Extensible a API/DB/FireBase sin modificar componentes
 
 ## P3 - Tests / DevOps
 

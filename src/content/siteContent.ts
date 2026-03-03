@@ -1,101 +1,78 @@
 /*
 Path: src/content/siteContent.ts
+
+CONTENIDO CENTRALIZADO: Este archivo importa de src/config/copy.ts
+↓
+Para editar textos, ve directamente a: src/config/copy.ts
+(Mismo archivo para todos los clientes/cambios de copy)
 */
 
 import type { SiteContent } from "../types/domain";
+import { editableCopy } from "../config/copy";
 
+/**
+ * Single source of truth para contenido
+ * Importado desde src/config/copy.ts
+ *
+ * Para cambiar algo:
+ * 1. Edita src/config/copy.ts
+ * 2. npm run build
+ * 3. Done ✅
+ */
 export const siteContent = {
   header: {
-    brandShort: "UPP",
-    brandFull: "Unión Papelera Platense",
-    menuTitle: "Menú",
-    menu: {
-      products: "Productos / Soluciones",
-      industries: "Industrias / Usos",
-      sustainability: "Sostenibilidad / Calidad",
-      about: "¿Quiénes somos?",
-      contact: "Contacto",
-      locationSubItem: "¿Dónde estamos?",
-      quoteCta: "Cotizar Ahora",
-    },
-    whatsappPrefilledMessage:
-      "Hola, quiero consultar sobre sus productos de papel reciclado.",
+    brandShort: editableCopy.header.brandShort,
+    brandFull: editableCopy.header.brandFull,
+    menuTitle: editableCopy.header.menuTitle,
+    menu: editableCopy.header.menu,
+    whatsappPrefilledMessage: editableCopy.header.whatsappPrefilledMessage,
   },
   hero: {
-    ariaLabel: "Carrusel de productos Papel Onda",
-    imageAlt: "Papel Onda - Producto",
-    badge: "Venta Directa de Fábrica",
-    title: "Bobinas de Papel Onda e Higiene 100% Reciclado",
-    description:
-      "Fabricamos papel reciclado de alta calidad para cartón corrugado e higiene industrial. Soluciones B2B con entrega directa desde Ringuelet, La Plata.",
-    prevSlideAria: "Slide anterior",
-    nextSlideAria: "Slide siguiente",
-    goToSlidePrefix: "Ir a slide",
+    ariaLabel: editableCopy.hero.ariaLabel,
+    imageAlt: editableCopy.hero.imageAlt,
+    badge: editableCopy.hero.badge,
+    title: editableCopy.hero.title,
+    description: editableCopy.hero.description,
+    prevSlideAria: editableCopy.hero.prevSlideAria,
+    nextSlideAria: editableCopy.hero.nextSlideAria,
+    goToSlidePrefix: editableCopy.hero.goToSlidePrefix,
   },
   products: {
-    sectionTitle: "Categorías de Productos",
-    seeAllLabel: "Ver todos",
-    categories: [
-      {
-        id: "onda",
-        title: "Papel Onda",
-        description:
-          "Papel para cartón corrugado: se usa como capa ondulada (medium/fluting) para fabricar planchas y cajas de embalaje.",
-        features: ["60-120 gr/m²", "Rigidez y amortiguación"],
-      },
-      {
-        id: "higiene",
-        title: "Línea Higiene",
-        description: "Bobinas jumbo para institucionales y fraccionadores.",
-        features: ["Simple Hoja", "100% Celulosa Reciclada"],
-      },
-    ],
+    sectionTitle: editableCopy.products.sectionTitle,
+    seeAllLabel: editableCopy.products.seeAllLabel,
+    categories: editableCopy.products.categories,
   },
   industries: {
-    title: "Industrias / Usos",
-    items: ["Alimentos", "Logística", "Retail", "Mayorista e Industria"],
+    title: editableCopy.industries.title,
+    items: editableCopy.industries.items,
   },
   sustainability: {
-    title: "Sostenibilidad / Calidad",
-    cards: [
-      {
-        title: "Sustentabilidad",
-        description: "Papel 100% reciclado",
-      },
-      {
-        title: "Calidad",
-        description: "Especificaciones técnicas por producto",
-      },
-      {
-        title: "Trazabilidad",
-        description: "Producción con control de lote",
-      },
-    ],
+    title: editableCopy.sustainability.title,
+    cards: editableCopy.sustainability.cards,
   },
   about: {
-    badge: "¿Quiénes somos?",
-    title: "Unión Papelera Platense",
-    description:
-      "Fabricamos y comercializamos papel reciclado para uso industrial y mayorista, con foco en calidad constante, atención ágil y abastecimiento confiable para operaciones B2B.",
+    badge: editableCopy.about.badge,
+    title: editableCopy.about.title,
+    description: editableCopy.about.description,
   },
   location: {
-    title: "Entregas en Ringuelet",
-    address: "Calle 508 e/ 16 y 17, Ringuelet",
-    mapTitle: "Mapa de ubicación en Ringuelet",
+    title: editableCopy.location.title,
+    address: editableCopy.location.address,
+    mapTitle: editableCopy.location.mapTitle,
   },
   stats: {
-    label: "Sostenibilidad",
-    recycledTotal: "1500+",
-    recycledUnit: "Ton. Recicladas",
-    growth: "+15%",
-    growthReference: "vs año anterior",
+    label: editableCopy.stats.label,
+    recycledTotal: editableCopy.stats.recycledTotal,
+    recycledUnit: editableCopy.stats.recycledUnit,
+    growth: editableCopy.stats.growth,
+    growthReference: editableCopy.stats.growthReference,
   },
   floatingActions: {
-    whatsappLabel: "Cotizar x WhatsApp",
-    phoneAriaLabel: "Llamar",
+    whatsappLabel: editableCopy.floatingActions.whatsappLabel,
+    phoneAriaLabel: editableCopy.floatingActions.phoneAriaLabel,
   },
   contact: {
-    whatsappNumber: "+54 9 11 2693-5682",
-    phoneNumber: "+54 9 11 2693-5682",
+    whatsappNumber: editableCopy.contact.whatsappNumber,
+    phoneNumber: editableCopy.contact.phoneNumber,
   },
 } as const satisfies SiteContent;

@@ -16,8 +16,12 @@ export class StaticContentProvider implements IContentProvider {
   private content: SiteContentStructure;
   private isHealthy: boolean = true;
 
-  constructor(content: SiteContentStructure = siteContent) {
-    this.content = content;
+  // Accept both readonly and mutable content structures
+  // Allow any object matching the structure (including readonly variants)
+  constructor(content?: any) {
+    // Deep copy ensures we have a fully mutable working copy
+    // This handles both readonly and mutable inputs safely
+    this.content = JSON.parse(JSON.stringify(content || siteContent)) as SiteContentStructure;
   }
 
   /**
@@ -73,9 +77,8 @@ export class StaticContentProvider implements IContentProvider {
 /**
  * Factory for creating StaticContentProvider
  * Enables dependency injection and testing
+ * Accepts any object matching SiteContentStructure shape (including readonly variants)
  */
-export function createStaticContentProvider(
-  content?: SiteContentStructure
-): StaticContentProvider {
+export function createStaticContentProvider(content?: any): StaticContentProvider {
   return new StaticContentProvider(content);
 }

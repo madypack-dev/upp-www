@@ -5,20 +5,20 @@ Path: src/types/domain.ts
 export type ProductCategoryId = "onda" | "higiene";
 
 export interface ProductCategory {
-  id: ProductCategoryId;
-  title: string;
-  description: string;
-  features: string[];
+  readonly id: ProductCategoryId;
+  readonly title: string;
+  readonly description: string;
+  readonly features: readonly string[];
 }
 
 export interface SustainabilityCard {
-  title: string;
-  description: string;
+  readonly title: string;
+  readonly description: string;
 }
 
 export interface Contact {
-  whatsappNumber: string;
-  phoneNumber: string;
+  readonly whatsappNumber: string;
+  readonly phoneNumber: string;
 }
 
 export interface SiteContent {
@@ -50,15 +50,15 @@ export interface SiteContent {
   products: {
     sectionTitle: string;
     seeAllLabel: string;
-    categories: ProductCategory[];
+    categories: readonly ProductCategory[];
   };
   industries: {
     title: string;
-    items: string[];
+    items: readonly string[];
   };
   sustainability: {
     title: string;
-    cards: SustainabilityCard[];
+    cards: readonly SustainabilityCard[];
   };
   about: {
     badge: string;
