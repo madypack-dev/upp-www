@@ -1,3 +1,7 @@
+/*
+Path: src/config/copy.ts
+*/
+
 /**
  * EDITABLE CONTENT - Single Source of Truth
  *
