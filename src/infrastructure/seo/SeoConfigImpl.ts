@@ -42,11 +42,11 @@ interface SeoConfigData {
   geoLongitude: string;
   address: PostalAddress;
   telephone: string;
-  operatingHours: OpeningHoursSpecification[];
+  operatingHours: readonly OpeningHoursSpecification[];
   businessType: string;
   additionalType: string;
   priceRange: string;
-  knowsAbout: string[];
+  knowsAbout: readonly string[];
 }
 
 /**
