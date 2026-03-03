@@ -157,7 +157,7 @@ export class SeoConfigImpl implements ISeoConfig {
     return this.data.address;
   }
 
-  getOperatingHours(): OpeningHoursSpecification[] {
+  getOperatingHours(): readonly OpeningHoursSpecification[] {
     return this.data.operatingHours;
   }
 

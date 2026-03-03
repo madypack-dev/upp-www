@@ -73,7 +73,7 @@ export interface PostalAddress {
  * Especificación de horarios de operación
  */
 export interface OpeningHoursSpecification {
-  dayOfWeek: (
+  dayOfWeek: readonly (
     | "Monday"
     | "Tuesday"
     | "Wednesday"

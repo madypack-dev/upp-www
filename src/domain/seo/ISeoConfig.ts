@@ -55,7 +55,7 @@ export interface ISeoConfig {
   /**
    * Obtiene horarios de operación
    */
-  getOperatingHours(): OpeningHoursSpecification[];
+  getOperatingHours(): readonly OpeningHoursSpecification[];
 
   /**
    * Obtiene teléfono de contacto
