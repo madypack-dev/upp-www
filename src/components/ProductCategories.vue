@@ -19,9 +19,10 @@
         :key="category.title"
         class="flex h-40 overflow-hidden rounded-xl border border-primary/10 bg-slate-900 md:h-44"
       >
-        <div
-          class="w-1/3 bg-cover bg-center"
-          :style="{ backgroundImage: `url('${category.image}')` }"
+        <img
+          :src="category.image"
+          :alt="category.title"
+          class="h-full w-1/3 object-cover"
         />
         <div class="flex w-2/3 flex-col justify-between p-4">
           <div>

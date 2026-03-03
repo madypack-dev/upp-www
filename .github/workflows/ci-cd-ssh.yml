@@ -183,5 +183,29 @@ jobs:
             -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes -p ${ssh_port}" \
             dist/ "${DEPLOY_SSH_USER}@${DEPLOY_SSH_HOST}:${deploy_remote_dir}/"
 
+      - name: Post-deploy / Verify artifact integrity
+        run: |
+          set -euo pipefail
+          deploy_remote_dir="${DEPLOY_REMOTE_DIR%/}"
+          ssh_port="${DEPLOY_SSH_PORT:-22}"
+
+          local_hash=$(tar \
+            --sort=name \
+            --mtime='UTC 1970-01-01' \
+            --owner=0 --group=0 --numeric-owner \
+            -cf - -C dist . | sha256sum | awk '{print $1}')
+
+          remote_hash=$(ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes -p "${ssh_port}" \
+            "${DEPLOY_SSH_USER}@${DEPLOY_SSH_HOST}" \
+            "tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner -cf - -C '${deploy_remote_dir}' . | sha256sum | awk '{print \\\$1}'")
+
+          echo "local_hash=${local_hash}"
+          echo "remote_hash=${remote_hash}"
+
+          if [ "${local_hash}" != "${remote_hash}" ]; then
+            echo "::error::Artifact integrity validation failed (local vs remote hash mismatch)."
+            exit 1
+          fi
+
       - name: Post-deploy / Health check
         run: curl -Ifs --retry 3 --retry-delay 5 "${DEPLOY_HEALTHCHECK_URL}"

@@ -74,6 +74,16 @@ El deploy está configurado para:
 - `DEPLOY_SSH_PORT` (default: `22`).
 - `DEPLOY_DEBUG` (`true` o `1`): habilita depuración adicional del deploy (contexto + `rsync --dry-run`).
 
+### Política de rotación de claves SSH
+
+- Frecuencia recomendada: cada 90 días o inmediatamente ante sospecha de compromiso.
+- Generar nueva clave Ed25519 para deploy (ejemplo: `ssh-keygen -t ed25519 -C "github-actions-deploy"`).
+- Actualizar `DEPLOY_SSH_PRIVATE_KEY` en el environment `production` de GitHub.
+- Instalar la nueva clave pública en `~/.ssh/authorized_keys` del servidor destino.
+- Regenerar y actualizar `DEPLOY_SSH_KNOWN_HOSTS` con `ssh-keyscan -H -p <puerto> <host>`.
+- Verificar deploy con `workflow_dispatch` en `main` y confirmar healthcheck.
+- Revocar clave anterior removiéndola de `authorized_keys` al finalizar validación.
+
 ### Guardrails de producción (workflow)
 
 - El workflow falla si `DEPLOY_REMOTE_DIR` no coincide con `/home/papelera/public_html`.

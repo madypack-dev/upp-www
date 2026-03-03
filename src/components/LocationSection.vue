@@ -16,7 +16,7 @@
         >
           <iframe
             :title="siteContent.location.mapTitle"
-            src="https://www.google.com/maps?q=Calle+508+e%2F+16+y+17,+Ringuelet,+La+Plata&output=embed"
+            :src="appConfig.locationMapEmbedUrl"
             class="h-56 w-full md:h-72"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
@@ -29,5 +29,6 @@
 
 <script setup lang="ts">
 import { siteContent } from "../content/siteContent";
+import { appConfig } from "../config/app";
 import MaterialSymbolIcon from "./icons/MaterialSymbolIcon.vue";
 </script>

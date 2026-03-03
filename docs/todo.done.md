@@ -8,6 +8,15 @@
 - [x] `docs/todo.md` quedó reducido al backlog activo (P1/P2/P3 pendientes).
 - [x] Se conservaron en este archivo los avances recientes de arquitectura/UX (rutas alias, centralización de contenido, tipado y tests).
 
+## Completadas (2026-03-02 · sesión actual)
+
+- [x] Implementado error handling centralizado: `src/composables/useErrorHandler.ts`, integración en `src/main.ts` y captura en `src/App.vue`.
+- [x] Expandido `src/config/` con `src/config/ui.ts` y `src/config/app.ts`.
+- [x] Refactor de inline styles en `HeroSection.vue` y `ProductCategories.vue` (sin `style` inline para gradientes/background image).
+- [x] Tests agregados para `MaterialSymbolIcon.vue` y `FloatingActions.vue` con Vitest + Vue Test Utils.
+- [x] Documentada política de rotación de claves SSH en `README.md`.
+- [x] Agregada validación de integridad de artifacts en `.github/workflows/ci-cd-ssh.yml`.
+
 ---
 
 ## P0 - Seguridad (Completadas)
@@ -67,21 +76,19 @@
 
 ---
 
-## P2 - Arquitectura (En Progreso)
+## P2 - Arquitectura
 
-*Pendientes para próxima sesión:*
-- Crear tipos centralizados `src/types/domain.ts`
-- Expandir `src/config/` con `ui.ts` y `app.ts`
-- Refactor inline styles en Tailwind
+- [x] Tipos centralizados en `src/types/domain.ts`.
+- [x] Configuración centralizada en `src/config/ui.ts` y `src/config/app.ts`.
+- [x] Refactor de inline styles críticos en `HeroSection.vue` y `ProductCategories.vue`.
 
 ---
 
-## P3 - Tests / Observabilidad (En Progreso)
+## P3 - Tests / Observabilidad
 
-*Pendientes para próxima sesión:*
-- Implementar error handling (`useErrorHandler`)
-- Setup vitest
-- Tests para componentes críticos
+- [x] Setup Vitest operativo.
+- [x] Error handling centralizado implementado.
+- [x] Tests de componentes críticos (`MaterialSymbolIcon`, `FloatingActions`).
 
 ---
 

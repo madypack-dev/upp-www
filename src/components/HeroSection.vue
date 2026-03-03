@@ -23,33 +23,16 @@
           :key="currentIndex"
           :src="heroImages[currentIndex]"
           :alt="siteContent.hero.imageAlt"
-          class="block h-80 w-full object-cover md:h-[28rem] lg:h-[32rem]"
-          style="object-position: 65% 50%"
+          class="block h-80 w-full object-cover object-[65%_50%] md:object-center md:h-[28rem] lg:h-[32rem]"
         />
       </Transition>
 
       <!-- Gradiente overlay responsivo -->
       <div
-        class="absolute inset-0 pointer-events-none hidden md:block"
-        style="
-          background: linear-gradient(
-            to right,
-            rgba(0, 0, 0, 0.6),
-            rgba(0, 0, 0, 0.25) 40%,
-            transparent
-          );
-        "
+        class="absolute inset-0 hidden bg-gradient-to-r from-black/60 via-black/25 to-transparent pointer-events-none md:block"
       />
       <div
-        class="absolute inset-0 pointer-events-none md:hidden"
-        style="
-          background: linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.7),
-            rgba(0, 0, 0, 0.35) 40%,
-            transparent
-          );
-        "
+        class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-transparent pointer-events-none md:hidden"
       />
 
       <!-- Contenedor de texto overlay -->
@@ -137,6 +120,7 @@ import { ref, watch, onMounted, onBeforeUnmount } from "vue";
 import heroOndaImage1 from "../assets/images/hero-onda-1.png";
 import heroOndaImage2 from "../assets/images/hero-onda-2.png";
 import { siteContent } from "../content/siteContent";
+import { uiConfig } from "../config/ui";
 
 const heroImages = [heroOndaImage1, heroOndaImage2];
 const currentIndex = ref(0);
@@ -161,7 +145,7 @@ const onTouchStart = (e: TouchEvent) => {
 const onTouchEnd = (e: TouchEvent) => {
   const touchEndX = e.changedTouches[0].clientX;
   const swipeDistance = touchStartX.value - touchEndX;
-  const swipeThreshold = 50; // pixels
+  const swipeThreshold = uiConfig.heroSwipeThresholdPx;
 
   if (Math.abs(swipeDistance) > swipeThreshold) {
     if (swipeDistance > 0) {
@@ -181,7 +165,7 @@ const startAutoAdvance = () => {
     if (!isHovering.value) {
       nextSlide();
     }
-  }, 6000);
+  }, uiConfig.heroCarouselAutoAdvanceMs);
 };
 
 const stopAutoAdvance = () => {
