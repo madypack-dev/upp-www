@@ -2,6 +2,12 @@
 
 **Resumen:** Registro de tareas completadas durante la auditoría técnica v1.0
 
+## Consolidación (2026-03-02)
+
+- [x] Se movieron de `docs/todo.md` todas las tareas completadas (`[x]`) para mantener `todo.md` sólo con pendientes.
+- [x] `docs/todo.md` quedó reducido al backlog activo (P1/P2/P3 pendientes).
+- [x] Se conservaron en este archivo los avances recientes de arquitectura/UX (rutas alias, centralización de contenido, tipado y tests).
+
 ---
 
 ## P0 - Seguridad (Completadas)
