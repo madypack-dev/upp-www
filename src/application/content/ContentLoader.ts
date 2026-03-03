@@ -23,13 +23,15 @@ export interface ContentLoaderResponse {
 export class ContentLoader {
   constructor(
     private contentProvider: IContentProvider,
-    private contentValidator: IContentValidator
+    private contentValidator: IContentValidator,
   ) {}
 
   /**
    * Load content from provider and validate
    */
-  async load(request: ContentLoaderRequest = {}): Promise<ContentLoaderResponse> {
+  async load(
+    request: ContentLoaderRequest = {},
+  ): Promise<ContentLoaderResponse> {
     const errors: string[] = [];
     const warnings: string[] = [];
 
@@ -37,8 +39,15 @@ export class ContentLoader {
       // Check provider availability
       const isAvailable = await this.contentProvider.isAvailable();
       if (!isAvailable) {
-        errors.push(`Content provider unavailable: ${this.contentProvider.getSource()}`);
-        return { success: false, errors, warnings, source: this.contentProvider.getSource() };
+        errors.push(
+          `Content provider unavailable: ${this.contentProvider.getSource()}`,
+        );
+        return {
+          success: false,
+          errors,
+          warnings,
+          source: this.contentProvider.getSource(),
+        };
       }
 
       // Load content
@@ -53,7 +62,9 @@ export class ContentLoader {
           });
         }
         validationResult.warnings.forEach((warning) => {
-          warnings.push(`[${warning.section}] ${warning.field}: ${warning.message}`);
+          warnings.push(
+            `[${warning.section}] ${warning.field}: ${warning.message}`,
+          );
         });
 
         if (errors.length > 0) {
@@ -76,7 +87,12 @@ export class ContentLoader {
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       errors.push(`Failed to load content: ${message}`);
-      return { success: false, errors, warnings, source: this.contentProvider.getSource() };
+      return {
+        success: false,
+        errors,
+        warnings,
+        source: this.contentProvider.getSource(),
+      };
     }
   }
 }

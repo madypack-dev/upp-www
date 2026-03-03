@@ -97,7 +97,7 @@ export class SeoConfigImpl implements ISeoConfig {
           dayOfWeek: h.dayOfWeek,
           opens: h.opens,
           closes: h.closes,
-        }))
+        })),
       ),
     };
   }
@@ -136,7 +136,8 @@ export class SeoConfigImpl implements ISeoConfig {
 
     if (!this.data.domain) errors.push("domain es requerido");
     if (!this.data.siteUrl) errors.push("siteUrl es requerido");
-    if (!this.data.organizationName) errors.push("organizationName es requerido");
+    if (!this.data.organizationName)
+      errors.push("organizationName es requerido");
     if (!this.data.address.country) errors.push("address.country es requerido");
     if (!this.data.telephone) errors.push("telephone es requerido");
 
@@ -165,12 +166,14 @@ export function createSeoConfigImpl(): SeoConfigImpl {
     author: "Unión Papelera Platense",
     pageTitle: "UPP | Unión Papelera - Papel Reciclado Industrial Argentina",
     ogTitle: "UPP | Unión Papelera - Papel Reciclado Industrial",
-    ogDescription: "Bobinas de papel onda e higiene 100% reciclado para industria B2B. Soluciones sostenibles con calidad garantizada.",
+    ogDescription:
+      "Bobinas de papel onda e higiene 100% reciclado para industria B2B. Soluciones sostenibles con calidad garantizada.",
     ogImage: "https://upp.ar/og-image.jpg",
     ogType: "website",
     twitterCard: "summary_large_image",
     twitterTitle: "UPP | Unión Papelera - Papel Reciclado Industrial",
-    twitterDescription: "Bobinas de papel onda e higiene 100% reciclado para industria B2B.",
+    twitterDescription:
+      "Bobinas de papel onda e higiene 100% reciclado para industria B2B.",
     geoPlaceName: "Ringuelet, La Plata",
     geoRegion: "AR-BA",
     geoLatitude: "-34.8295",
@@ -193,6 +196,11 @@ export function createSeoConfigImpl(): SeoConfigImpl {
     businessType: "LocalBusiness",
     additionalType: "ManufacturingBusiness",
     priceRange: "$$",
-    knowsAbout: ["Papel onda", "Papel higiene", "Cartón corrugado", "Papel reciclado"],
+    knowsAbout: [
+      "Papel onda",
+      "Papel higiene",
+      "Cartón corrugado",
+      "Papel reciclado",
+    ],
   });
 }

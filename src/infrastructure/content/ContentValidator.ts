@@ -4,7 +4,11 @@
  * Validates structure, types, and required fields
  */
 
-import type { IContentValidator, ValidationResult, ValidationError } from "../../domain/content/IContentValidator";
+import type {
+  IContentValidator,
+  ValidationResult,
+  ValidationError,
+} from "../../domain/content/IContentValidator";
 import type {
   SiteContentStructure,
   ContentSection,
@@ -41,7 +45,7 @@ export class ContentValidator implements IContentValidator {
    */
   validateSection<T extends ContentSection>(
     section: T,
-    data: unknown
+    data: unknown,
   ): ValidationResult {
     const errors: ValidationError[] = [];
 

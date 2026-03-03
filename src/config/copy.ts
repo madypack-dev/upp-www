@@ -1,6 +1,6 @@
 /**
  * EDITABLE CONTENT - Single Source of Truth
- * 
+ *
  * ⚠️ IMPORTANTE: Este archivo es la ÚNICA fuente para editar textos y CTAs
  * Sin romper nada. Cambios aquí automáticamente reflejados en toda la app.
  *

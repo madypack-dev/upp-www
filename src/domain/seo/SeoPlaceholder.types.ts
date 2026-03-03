@@ -73,7 +73,15 @@ export interface PostalAddress {
  * Especificación de horarios de operación
  */
 export interface OpeningHoursSpecification {
-  dayOfWeek: ("Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday")[];
+  dayOfWeek: (
+    | "Monday"
+    | "Tuesday"
+    | "Wednesday"
+    | "Thursday"
+    | "Friday"
+    | "Saturday"
+    | "Sunday"
+  )[];
   opens: string; // formato HH:mm, ej: "07:00"
   closes: string; // formato HH:mm, ej: "15:00"
 }

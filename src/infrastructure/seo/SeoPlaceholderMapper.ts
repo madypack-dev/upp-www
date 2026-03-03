@@ -10,7 +10,10 @@
  * - Reutilizable en cualquier contexto (Vite, Node.js CLI, etc.)
  */
 
-import type { SeoPlaceholderMap, SeoTransformationResult } from "../../domain/seo/SeoPlaceholder.types";
+import type {
+  SeoPlaceholderMap,
+  SeoTransformationResult,
+} from "../../domain/seo/SeoPlaceholder.types";
 
 /**
  * Mapea placeholders en HTML usando valores SEO
@@ -27,7 +30,10 @@ export class SeoPlaceholderMapper {
    * @param placeholders - Mapa de KEY → valor
    * @returns Resultado con HTML transformado
    */
-  static map(html: string, placeholders: SeoPlaceholderMap): SeoTransformationResult {
+  static map(
+    html: string,
+    placeholders: SeoPlaceholderMap,
+  ): SeoTransformationResult {
     let transformed = html;
     let replacedCount = 0;
     const errors: string[] = [];
@@ -38,7 +44,7 @@ export class SeoPlaceholderMapper {
         const placeholder = `%%${key}%%`;
         const pattern = new RegExp(placeholder, "g");
         const matches = transformed.match(pattern) || [];
-        
+
         if (matches.length > 0) {
           transformed = transformed.replace(pattern, value);
           replacedCount += matches.length;
@@ -51,7 +57,8 @@ export class SeoPlaceholderMapper {
         replacedCount,
       };
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown error";
       return {
         success: false,
         html: transformed,
@@ -65,7 +72,10 @@ export class SeoPlaceholderMapper {
    * Valida que no hay placeholders sin reemplazar
    * (útil para QA/testing)
    */
-  static validateNoPlaceholders(html: string): { valid: boolean; unreplaced: string[] } {
+  static validateNoPlaceholders(html: string): {
+    valid: boolean;
+    unreplaced: string[];
+  } {
     const placeholderPattern = /%%[A-Z_]+%%/g;
     const matches = html.match(placeholderPattern) || [];
 

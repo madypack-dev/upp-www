@@ -4,7 +4,11 @@
  * Enables: file-based, API-based, database, test mocks
  */
 
-import type { SiteContentStructure, ContentSection, ContentValue } from "./ContentSection.types";
+import type {
+  SiteContentStructure,
+  ContentSection,
+  ContentValue,
+} from "./ContentSection.types";
 
 export interface IContentProvider {
   /**
@@ -17,9 +21,7 @@ export interface IContentProvider {
    * Load specific content section
    * Type-safe: Only allows valid section keys
    */
-  loadSection<T extends ContentSection>(
-    section: T
-  ): Promise<ContentValue<T>>;
+  loadSection<T extends ContentSection>(section: T): Promise<ContentValue<T>>;
 
   /**
    * Identify source for debugging/auditing

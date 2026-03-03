@@ -21,7 +21,9 @@ export class StaticContentProvider implements IContentProvider {
   constructor(content?: any) {
     // Deep copy ensures we have a fully mutable working copy
     // This handles both readonly and mutable inputs safely
-    this.content = JSON.parse(JSON.stringify(content || siteContent)) as SiteContentStructure;
+    this.content = JSON.parse(
+      JSON.stringify(content || siteContent),
+    ) as SiteContentStructure;
   }
 
   /**
@@ -39,14 +41,16 @@ export class StaticContentProvider implements IContentProvider {
    * Load specific section with type safety
    */
   async loadSection<T extends ContentSection>(
-    section: T
+    section: T,
   ): Promise<ContentValue<T>> {
     if (!this.isHealthy) {
       throw new Error("StaticContentProvider is unhealthy");
     }
 
     if (!(section in this.content)) {
-      throw new Error(`Section "${String(section)}" not found in static content`);
+      throw new Error(
+        `Section "${String(section)}" not found in static content`,
+      );
     }
 
     return this.content[section] as ContentValue<T>;
@@ -79,6 +83,8 @@ export class StaticContentProvider implements IContentProvider {
  * Enables dependency injection and testing
  * Accepts any object matching SiteContentStructure shape (including readonly variants)
  */
-export function createStaticContentProvider(content?: any): StaticContentProvider {
+export function createStaticContentProvider(
+  content?: any,
+): StaticContentProvider {
   return new StaticContentProvider(content);
 }

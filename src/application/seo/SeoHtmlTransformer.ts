@@ -38,7 +38,9 @@ export class SeoHtmlTransformationUseCase {
   /**
    * Ejecuta la transformación
    */
-  execute(request: SeoHtmlTransformationRequest): SeoHtmlTransformationResponse {
+  execute(
+    request: SeoHtmlTransformationRequest,
+  ): SeoHtmlTransformationResponse {
     // 1. Validar configuración
     const validation = request.config.validate();
     if (!validation.valid) {

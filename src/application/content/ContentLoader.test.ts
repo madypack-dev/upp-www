@@ -12,7 +12,9 @@ import type { SiteContentStructure } from "../../domain/content/ContentSection.t
 /**
  * Mock de IContentProvider para testing
  */
-function createMockProvider(overrides?: Partial<IContentProvider>): IContentProvider {
+function createMockProvider(
+  overrides?: Partial<IContentProvider>,
+): IContentProvider {
   const mockContent: SiteContentStructure = {
     header: {
       brandShort: "UPP",
@@ -91,7 +93,9 @@ function createMockProvider(overrides?: Partial<IContentProvider>): IContentProv
 /**
  * Mock de IContentValidator para testing
  */
-function createMockValidator(overrides?: Partial<IContentValidator>): IContentValidator {
+function createMockValidator(
+  overrides?: Partial<IContentValidator>,
+): IContentValidator {
   return {
     validate: () => ({ isValid: true, errors: [], warnings: [] }),
     validateSection: () => ({ isValid: true, errors: [], warnings: [] }),
@@ -128,7 +132,14 @@ describe("ContentLoader", () => {
         validate: () => ({
           isValid: true,
           errors: [],
-          warnings: [{ section: "header", field: "brandShort", message: "test warning", severity: "warning" }],
+          warnings: [
+            {
+              section: "header",
+              field: "brandShort",
+              message: "test warning",
+              severity: "warning",
+            },
+          ],
         }),
       });
 
@@ -171,7 +182,9 @@ describe("ContentLoader", () => {
       const result = await loader.load();
 
       expect(result.success).toBe(false);
-      expect(result.errors).toContain("[header] brandShort: Brand short es obligatorio");
+      expect(result.errors).toContain(
+        "[header] brandShort: Brand short es obligatorio",
+      );
     });
 
     it("debe reportar cuando el proveedor no está disponible", async () => {

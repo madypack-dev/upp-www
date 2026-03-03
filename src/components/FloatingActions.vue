@@ -59,5 +59,7 @@ const containerClasses = computed(() => ({
 const whatsappHref = computed(
   () => `https://wa.me/${normalizeDigits(siteContent.contact.whatsappNumber)}`,
 );
-const phoneHref = computed(() => `tel:${normalizeTel(siteContent.contact.phoneNumber)}`);
+const phoneHref = computed(
+  () => `tel:${normalizeTel(siteContent.contact.phoneNumber)}`,
+);
 </script>

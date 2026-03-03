@@ -7,8 +7,14 @@
 import type { IContentPort } from "../application/ports/ContentPort";
 import { ContentLoader } from "../application/content/ContentLoader";
 import { SectionResolver } from "../application/content/SectionResolver";
-import { StaticContentProvider, createStaticContentProvider } from "../infrastructure/content/StaticContentProvider";
-import { ContentValidator, createContentValidator } from "../infrastructure/content/ContentValidator";
+import {
+  StaticContentProvider,
+  createStaticContentProvider,
+} from "../infrastructure/content/StaticContentProvider";
+import {
+  ContentValidator,
+  createContentValidator,
+} from "../infrastructure/content/ContentValidator";
 import type { SiteContentStructure } from "../domain/content/ContentSection.types";
 
 /**
@@ -79,4 +85,7 @@ export async function getContent(): Promise<SiteContentStructure> {
 }
 
 export { type IContentPort } from "../application/ports/ContentPort";
-export type { ContentSection, SiteContentStructure } from "../domain/content/ContentSection.types";
+export type {
+  ContentSection,
+  SiteContentStructure,
+} from "../domain/content/ContentSection.types";

@@ -5,7 +5,10 @@
  */
 
 import type { IContentProvider } from "../../domain/content/IContentProvider";
-import type { ContentSection, ContentValue } from "../../domain/content/ContentSection.types";
+import type {
+  ContentSection,
+  ContentValue,
+} from "../../domain/content/ContentSection.types";
 
 export interface SectionResolverRequest<T extends ContentSection> {
   section: T;
@@ -26,7 +29,7 @@ export class SectionResolver {
    * Resolve specific content section with type safety
    */
   async resolve<T extends ContentSection>(
-    request: SectionResolverRequest<T>
+    request: SectionResolverRequest<T>,
   ): Promise<SectionResolverResponse<T>> {
     const { section, throwOnMissing = true } = request;
 
@@ -57,19 +60,19 @@ export class SectionResolver {
    * Resolve multiple sections in parallel
    */
   async resolveBatch<T extends ContentSection>(
-    sections: T[]
+    sections: T[],
   ): Promise<Record<T, SectionResolverResponse<T>>> {
     const results = await Promise.all(
       sections.map((section) =>
         this.resolve({ section, throwOnMissing: false }).then((response) => ({
           section,
           response,
-        }))
-      )
+        })),
+      ),
     );
 
     return Object.fromEntries(
-      results.map(({ section, response }) => [section, response])
+      results.map(({ section, response }) => [section, response]),
     ) as Record<T, SectionResolverResponse<T>>;
   }
 }

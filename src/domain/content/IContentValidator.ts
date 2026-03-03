@@ -3,7 +3,10 @@
  * Contract for validating content structure and data integrity
  */
 
-import type { SiteContentStructure, ContentSection } from "./ContentSection.types";
+import type {
+  SiteContentStructure,
+  ContentSection,
+} from "./ContentSection.types";
 
 export interface ValidationError {
   section: ContentSection | "root";
@@ -30,7 +33,7 @@ export interface IContentValidator {
    */
   validateSection<T extends ContentSection>(
     section: T,
-    data: unknown
+    data: unknown,
   ): ValidationResult;
 
   /**

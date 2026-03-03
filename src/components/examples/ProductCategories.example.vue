@@ -1,15 +1,9 @@
-/**
- * Ejemplo: ProductCategories.vue con useContent()
- * 
- * Muestra cómo migrar un componente existente de importar siteContent
- * a usar el composable useContent() de la arquitectura limpia.
- * 
- * Beneficios de migración:
- * - Testeable sin necesidad de mocker el archivo
- * - Fácil cambiar a API/DB sin editar componente
- * - Loading states y manejo de errores integrado
- * - Type-safe con TypeScript completo
- */
+/** * Ejemplo: ProductCategories.vue con useContent() * * Muestra cómo migrar un
+componente existente de importar siteContent * a usar el composable useContent()
+de la arquitectura limpia. * * Beneficios de migración: * - Testeable sin
+necesidad de mocker el archivo * - Fácil cambiar a API/DB sin editar componente
+* - Loading states y manejo de errores integrado * - Type-safe con TypeScript
+completo */
 
 <template>
   <section>
@@ -23,7 +17,10 @@
     </div>
 
     <!-- Error state -->
-    <div v-else-if="hasError" class="bg-red-50 border border-red-200 rounded p-4">
+    <div
+      v-else-if="hasError"
+      class="bg-red-50 border border-red-200 rounded p-4"
+    >
       <p class="text-red-800 font-semibold">Error cargando productos</p>
       <p class="text-red-700 text-sm mt-2">{{ error }}</p>
       <button
@@ -60,7 +57,11 @@
 
           <!-- Features list -->
           <ul class="space-y-2 mb-4">
-            <li v-for="(feature, idx) in category.features" :key="idx" class="flex items-start">
+            <li
+              v-for="(feature, idx) in category.features"
+              :key="idx"
+              class="flex items-start"
+            >
               <span class="text-green-500 mr-2">✓</span>
               <span class="text-gray-700">{{ feature }}</span>
             </li>
@@ -77,20 +78,23 @@
 
       <!-- See all button -->
       <div class="text-center">
-        <button class="px-6 py-2 border-2 border-blue-600 text-blue-600 rounded hover:bg-blue-50">
+        <button
+          class="px-6 py-2 border-2 border-blue-600 text-blue-600 rounded hover:bg-blue-50"
+        >
           {{ content.products.seeAllLabel }}
         </button>
       </div>
 
       <!-- Warnings (if any) -->
-      <div v-if="warnings.length > 0" class="bg-yellow-50 border border-yellow-200 rounded p-4">
+      <div
+        v-if="warnings.length > 0"
+        class="bg-yellow-50 border border-yellow-200 rounded p-4"
+      >
         <p class="text-yellow-800 text-sm">
           ⚠️ Se encontraron warnings de contenido:
         </p>
         <ul class="mt-2 text-yellow-700 text-xs space-y-1">
-          <li v-for="(warning, idx) in warnings" :key="idx">
-            • {{ warning }}
-          </li>
+          <li v-for="(warning, idx) in warnings" :key="idx">• {{ warning }}</li>
         </ul>
       </div>
     </div>
@@ -121,7 +125,7 @@ export default defineComponent({
     const hasError = computed(() => error.value !== null);
     const warnings = ref<string[]>([]);
 
-    // In real app: 
+    // In real app:
     // onMounted(() => { load() })
     // const retryLoad = async () => { await load() }
     const retryLoad = () => {

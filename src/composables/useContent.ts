@@ -6,7 +6,10 @@
 
 import { ref, computed } from "vue";
 import type { Ref, ComputedRef } from "vue";
-import type { SiteContentStructure, ContentSection } from "../domain/content/ContentSection.types";
+import type {
+  SiteContentStructure,
+  ContentSection,
+} from "../domain/content/ContentSection.types";
 import { contentLoader, sectionResolver } from "../config/content";
 
 interface UseContentState {
@@ -20,7 +23,9 @@ interface UseContentComposed extends UseContentState {
   isLoaded: ComputedRef<boolean>;
   hasError: ComputedRef<boolean>;
   load: () => Promise<void>;
-  getSection: <T extends ContentSection>(section: T) => Promise<SiteContentStructure[T]| null>;
+  getSection: <T extends ContentSection>(
+    section: T,
+  ) => Promise<SiteContentStructure[T] | null>;
 }
 
 /**
