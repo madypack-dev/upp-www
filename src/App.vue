@@ -9,7 +9,7 @@
       {{ appConfig.runtimeErrorMessage }}
     </div>
     <AppHeader v-model="isMenuOpen" />
-    <main class="mx-auto w-full max-w-6xl pb-32 md:pb-36">
+    <main class="mx-auto w-full max-w-6xl pt-[65px] pb-32 md:pb-36">
       <HeroSection />
       <ProductCategories />
       <IndustriesSection />

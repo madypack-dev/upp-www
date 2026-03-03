@@ -1,6 +1,6 @@
 <template>
   <header
-    class="glass-effect sticky top-0 z-50 border-b border-primary/10 px-4 py-3"
+    class="glass-effect fixed left-0 right-0 top-0 w-full z-[9999] border-b border-primary/10 px-4 py-3"
   >
     <div class="mx-auto flex w-full max-w-6xl items-center justify-between">
       <div class="flex items-center gap-3">
