@@ -23,7 +23,10 @@ Las tareas realizadas fueron movidas a `docs/todo.done.md`.
 
 - [x] Usar coordenadas exactas de planta (-34.8295, -57.9956)
 - [x] Agregar horarios de operación (07:00 a 15:00) en schema openingHoursSpecification
-- [ ] Evaluar Google My Business setup (GMB) para verificación local
+- [x] Evaluar Google My Business setup (GMB) para verificación local
+  - Guía completa: [docs/gmb-setup.md](./gmb-setup.md)
+  - Schema mejorado con `contactPoint`, `priceRange`, `additionalType`
+  - Próximo paso: Crear perfil GMB manualmente en https://www.google.com/business/
 
 ## P2 - Arquitectura
 

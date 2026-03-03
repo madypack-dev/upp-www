@@ -156,3 +156,8 @@ Recomendación final:
 - ✅ Postal code (1900) en schema
 - ✅ Address completo: Calle 508 e/ 16 y 17, Ringuelet, La Plata, 1900, AR
 - ✅ Integración de contact info en siteContent.ts (eliminado contact.ts)
+- ✅ Google My Business (GMB): Evaluación completada
+  - Schema mejorado con `contactPoint` y `priceRange`
+  - Guía de setup: [docs/gmb-setup.md](./gmb-setup.md)
+  - Status actual: **Pendiente creación manual del perfil GMB**
+  - NAP consistency: documentado y listo para sincronizar
