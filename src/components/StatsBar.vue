@@ -13,13 +13,13 @@
           <p
             class="text-[10px] font-bold uppercase leading-none tracking-wider text-slate-400"
           >
-            Sostenibilidad
+            {{ siteContent.stats.label }}
           </p>
           <p class="text-xl font-bold text-slate-100">
-            1500+
-            <span class="text-sm font-medium text-primary"
-              >Ton. Recicladas</span
-            >
+            {{ siteContent.stats.recycledTotal }}
+            <span class="text-sm font-medium text-primary">{{
+              siteContent.stats.recycledUnit
+            }}</span>
           </p>
         </div>
       </div>
@@ -27,14 +27,18 @@
         <p
           class="flex items-center gap-1 text-sm font-bold text-primary sm:justify-end"
         >
-          <MaterialSymbolIcon name="trending_up" class="size-4" /> +15%
+          <MaterialSymbolIcon name="trending_up" class="size-4" />
+          {{ siteContent.stats.growth }}
         </p>
-        <p class="text-[10px] text-slate-400">vs año anterior</p>
+        <p class="text-[10px] text-slate-400">
+          {{ siteContent.stats.growthReference }}
+        </p>
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import { siteContent } from "../content/siteContent";
 import MaterialSymbolIcon from "./icons/MaterialSymbolIcon.vue";
 </script>

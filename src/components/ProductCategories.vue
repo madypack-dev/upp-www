@@ -1,12 +1,15 @@
 <template>
   <section id="productos" class="mb-8 px-4">
     <div class="mb-4 flex items-center justify-between gap-4">
-      <h3 class="text-xl font-bold tracking-tight">Categorías de Productos</h3>
+      <h3 class="text-xl font-bold tracking-tight">
+        {{ siteContent.products.sectionTitle }}
+      </h3>
       <button
         type="button"
         class="flex items-center gap-1 text-sm font-semibold text-primary"
       >
-        Ver todos <MaterialSymbolIcon name="arrow_forward" class="size-4" />
+        {{ siteContent.products.seeAllLabel }}
+        <MaterialSymbolIcon name="arrow_forward" class="size-4" />
       </button>
     </div>
 
@@ -46,29 +49,17 @@
 
 <script setup lang="ts">
 import MaterialSymbolIcon from "./icons/MaterialSymbolIcon.vue";
+import { siteContent } from "../content/siteContent";
 import higieneImage from "../assets/images/higiene.png";
 import ondaImage from "../assets/images/onda.png";
 
-type Category = {
-  title: string;
-  description: string;
-  image: string;
-  features: string[];
+const categoryImages: Record<string, string> = {
+  higiene: higieneImage,
+  onda: ondaImage,
 };
 
-const categories: Category[] = [
-  {
-    title: "Papel Onda",
-    description:
-      "Papel para cartón corrugado: se usa como capa ondulada (medium/fluting) para fabricar planchas y cajas de embalaje.",
-    image: ondaImage,
-    features: ["60-120 gr/m²", "Rigidez y amortiguación"],
-  },
-  {
-    title: "Línea Higiene",
-    description: "Bobinas jumbo para institucionales y fraccionadores.",
-    image: higieneImage,
-    features: ["Simple Hoja", "100% Celulosa Reciclada"],
-  },
-];
+const categories = siteContent.products.categories.map((category) => ({
+  ...category,
+  image: categoryImages[category.id],
+}));
 </script>

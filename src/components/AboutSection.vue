@@ -6,18 +6,20 @@
       <span
         class="mb-3 inline-block rounded-full bg-primary/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-primary"
       >
-        ¿Quiénes somos?
+        {{ siteContent.about.badge }}
       </span>
       <h3 class="mb-2 text-2xl font-bold md:text-3xl">
-        Unión Papelera Platense
+        {{ siteContent.about.title }}
       </h3>
       <p
         class="max-w-3xl text-sm leading-relaxed text-slate-700 md:text-base dark:text-slate-300"
       >
-        Fabricamos y comercializamos papel reciclado para uso industrial y
-        mayorista, con foco en calidad constante, atención ágil y abastecimiento
-        confiable para operaciones B2B.
+        {{ siteContent.about.description }}
       </p>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { siteContent } from "../content/siteContent";
+</script>

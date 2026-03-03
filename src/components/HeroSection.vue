@@ -10,7 +10,7 @@
       @touchend="onTouchEnd"
       tabindex="0"
       role="region"
-      aria-label="Carrusel de productos Papel Onda"
+      :aria-label="siteContent.hero.ariaLabel"
     >
       <!-- Imágenes con Transition Fade -->
       <Transition
@@ -22,7 +22,7 @@
         <img
           :key="currentIndex"
           :src="heroImages[currentIndex]"
-          alt="Papel Onda - Producto"
+          :alt="siteContent.hero.imageAlt"
           class="block h-80 w-full object-cover md:h-[28rem] lg:h-[32rem]"
           style="object-position: 65% 50%"
         />
@@ -62,19 +62,19 @@
           <span
             class="mb-3 inline-block rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-background-dark drop-shadow-sm"
           >
-            Venta Directa de Fábrica
+            {{ siteContent.hero.badge }}
           </span>
 
           <h2
             class="mb-3 text-3xl font-black leading-tight text-white drop-shadow-sm sm:text-4xl lg:text-5xl"
           >
-            Bobinas de Papel Onda e Higiene 100% Reciclado
+            {{ siteContent.hero.title }}
           </h2>
 
           <p
             class="text-sm text-slate-100 opacity-90 drop-shadow-sm sm:text-base md:max-w-lg"
           >
-            Soluciones industriales sostenibles para el mercado B2B y mayorista.
+            {{ siteContent.hero.description }}
           </p>
         </div>
       </div>
@@ -93,7 +93,7 @@
               ? 'h-2 w-6 bg-primary'
               : 'h-2 w-2 bg-white/40 hover:bg-white/60',
           ]"
-          :aria-label="`Ir a slide ${index + 1}`"
+          :aria-label="`${siteContent.hero.goToSlidePrefix} ${index + 1}`"
           @click="currentIndex = index"
         />
       </div>
@@ -102,7 +102,7 @@
       <button
         type="button"
         class="absolute left-4 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center rounded-full bg-white/10 p-2 transition hover:bg-white/20 md:flex"
-        aria-label="Slide anterior"
+        :aria-label="siteContent.hero.prevSlideAria"
         @click="previousSlide"
       >
         <svg
@@ -117,7 +117,7 @@
       <button
         type="button"
         class="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center rounded-full bg-white/10 p-2 transition hover:bg-white/20 md:flex"
-        aria-label="Slide siguiente"
+        :aria-label="siteContent.hero.nextSlideAria"
         @click="nextSlide"
       >
         <svg
@@ -136,6 +136,7 @@
 import { ref, watch, onMounted, onBeforeUnmount } from "vue";
 import heroOndaImage1 from "../assets/images/hero-onda-1.png";
 import heroOndaImage2 from "../assets/images/hero-onda-2.png";
+import { siteContent } from "../content/siteContent";
 
 const heroImages = [heroOndaImage1, heroOndaImage2];
 const currentIndex = ref(0);
