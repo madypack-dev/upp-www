@@ -1,7 +1,7 @@
 <template>
   <section id="nosotros" class="px-4 py-5 md:py-6">
     <div
-      class="relative overflow-hidden rounded-3xl"
+      class="relative overflow-hidden rounded-3xl h-80 md:h-[28rem] lg:h-[32rem]"
       @mouseenter="isHovering = true"
       @mouseleave="isHovering = false"
       @keydown.left="previousSlide"
