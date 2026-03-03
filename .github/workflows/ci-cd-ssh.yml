@@ -193,11 +193,11 @@ jobs:
             --sort=name \
             --mtime='UTC 1970-01-01' \
             --owner=0 --group=0 --numeric-owner \
-            -cf - -C dist . | sha256sum | awk '{print $1}')
+            -cf - -C dist . | sha256sum | cut -d ' ' -f1)
 
           remote_hash=$(ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes -p "${ssh_port}" \
             "${DEPLOY_SSH_USER}@${DEPLOY_SSH_HOST}" \
-            "tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner -cf - -C '${deploy_remote_dir}' . | sha256sum | awk '{print \\\$1}'")
+            "tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner -cf - -C '${deploy_remote_dir}' . | sha256sum | cut -d ' ' -f1")
 
           echo "local_hash=${local_hash}"
           echo "remote_hash=${remote_hash}"
