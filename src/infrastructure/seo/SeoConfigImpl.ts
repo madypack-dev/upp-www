@@ -2,12 +2,12 @@
  * Infrastructure: SEO Configuration Implementation
  *
  * Implementación concreta de ISeoConfig.
- * Contiene la definición de valores SEO para UPP.
+ * Lee valores SEO desde src/config/copy.ts (single source of truth).
  *
  * SOLID - Single Responsibility Principle:
- * - Responsabilidad única: almacenar valores SEO
- * - No contiene lógica de transformación o validación
- * - Los casos de uso pueden testear sin esta clase
+ * - Responsabilidad única: transformar valores SEO en placeholder map
+ * - No almacena valores (vienen de copy.ts)
+ * - No contiene lógica de validación
  */
 
 import type { ISeoConfig } from "../../domain/seo/ISeoConfig";
@@ -16,6 +16,7 @@ import type {
   OpeningHoursSpecification,
   SeoPlaceholderMap,
 } from "../../domain/seo/SeoPlaceholder.types";
+import { seoCopy } from "../../config/copy";
 
 interface SeoConfigData {
   siteName: string;
@@ -50,12 +51,45 @@ interface SeoConfigData {
 
 /**
  * Implementación de ISeoConfig para UPP
+ * Lee valores desde seoCopy (src/config/copy.ts)
  */
 export class SeoConfigImpl implements ISeoConfig {
   private readonly data: SeoConfigData;
 
-  constructor(data: SeoConfigData) {
-    this.data = data;
+  // Constructor acepta datos opcionales (para testing), por defecto usa seoCopy
+  constructor(data?: Partial<SeoConfigData>) {
+    this.data = {
+      siteName: data?.siteName ?? seoCopy.siteName,
+      siteUrl: data?.siteUrl ?? seoCopy.siteUrl,
+      domain: data?.domain ?? seoCopy.domain,
+      language: data?.language ?? seoCopy.language,
+      organizationName: data?.organizationName ?? seoCopy.organizationName,
+      organizationShortName:
+        data?.organizationShortName ?? seoCopy.organizationShortName,
+      description: data?.description ?? seoCopy.description,
+      keywords: data?.keywords ?? seoCopy.keywords,
+      author: data?.author ?? seoCopy.author,
+      pageTitle: data?.pageTitle ?? seoCopy.pageTitle,
+      ogTitle: data?.ogTitle ?? seoCopy.ogTitle,
+      ogDescription: data?.ogDescription ?? seoCopy.ogDescription,
+      ogImage: data?.ogImage ?? seoCopy.ogImage,
+      ogType: data?.ogType ?? seoCopy.ogType,
+      twitterCard: data?.twitterCard ?? seoCopy.twitterCard,
+      twitterTitle: data?.twitterTitle ?? seoCopy.twitterTitle,
+      twitterDescription:
+        data?.twitterDescription ?? seoCopy.twitterDescription,
+      geoPlaceName: data?.geoPlaceName ?? seoCopy.geoPlaceName,
+      geoRegion: data?.geoRegion ?? seoCopy.geoRegion,
+      geoLatitude: data?.geoLatitude ?? seoCopy.geoLatitude,
+      geoLongitude: data?.geoLongitude ?? seoCopy.geoLongitude,
+      address: data?.address ?? seoCopy.address,
+      telephone: data?.telephone ?? seoCopy.telephone,
+      operatingHours: data?.operatingHours ?? seoCopy.operatingHours,
+      businessType: data?.businessType ?? seoCopy.businessType,
+      additionalType: data?.additionalType ?? seoCopy.additionalType,
+      priceRange: data?.priceRange ?? seoCopy.priceRange,
+      knowsAbout: data?.knowsAbout ?? seoCopy.knowsAbout,
+    };
   }
 
   getPlaceholderMap(): SeoPlaceholderMap {
@@ -149,58 +183,11 @@ export class SeoConfigImpl implements ISeoConfig {
 }
 
 /**
- * Factory para crear instancia de SeoConfigImpl de UPP
+ * Factory para crear instancia de SeoConfigImpl
+ * Lee valores automáticamente desde seoCopy (src/config/copy.ts)
+ * No requiere parámetros - simplemente crea la instancia
  */
 export function createSeoConfigImpl(): SeoConfigImpl {
-  return new SeoConfigImpl({
-    siteName: "UPP | Unión Papelera",
-    siteUrl: "https://upp.ar/",
-    domain: "upp.ar",
-    language: "es_AR",
-    organizationName: "Unión Papelera Platense",
-    organizationShortName: "UPP",
-    description:
-      "Unión Papelera Platense: fabricación y comercialización de papel onda e higiene 100% reciclado para industria B2B. Bobinas de calidad, entregas en Ringuelet, La Plata.",
-    keywords:
-      "papel reciclado, papel onda, papel higiene, bobinas, cartón corrugado, industrial, B2B, Argentina",
-    author: "Unión Papelera Platense",
-    pageTitle: "UPP | Unión Papelera - Papel Reciclado Industrial Argentina",
-    ogTitle: "UPP | Unión Papelera - Papel Reciclado Industrial",
-    ogDescription:
-      "Bobinas de papel onda e higiene 100% reciclado para industria B2B. Soluciones sostenibles con calidad garantizada.",
-    ogImage: "https://upp.ar/og-image.jpg",
-    ogType: "website",
-    twitterCard: "summary_large_image",
-    twitterTitle: "UPP | Unión Papelera - Papel Reciclado Industrial",
-    twitterDescription:
-      "Bobinas de papel onda e higiene 100% reciclado para industria B2B.",
-    geoPlaceName: "Ringuelet, La Plata",
-    geoRegion: "AR-BA",
-    geoLatitude: "-34.8295",
-    geoLongitude: "-57.9956",
-    address: {
-      streetAddress: "Calle 508 e/ 16 y 17",
-      locality: "Ringuelet",
-      region: "La Plata",
-      postalCode: "1900",
-      country: "AR",
-    },
-    telephone: "+54 9 11 2693-5682",
-    operatingHours: [
-      {
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "07:00",
-        closes: "15:00",
-      },
-    ],
-    businessType: "LocalBusiness",
-    additionalType: "ManufacturingBusiness",
-    priceRange: "$$",
-    knowsAbout: [
-      "Papel onda",
-      "Papel higiene",
-      "Cartón corrugado",
-      "Papel reciclado",
-    ],
-  });
+  // Sin parámetros: usa valores de seoCopy automáticamente
+  return new SeoConfigImpl();
 }

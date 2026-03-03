@@ -198,7 +198,86 @@ export type EditableCopy = {
   stats: typeof statsCopy;
   floatingActions: typeof floatingActionsCopy;
   contact: typeof contactCopy;
+  seo: typeof seoCopy;
 };
+
+/**
+ * SECCIÓN 10: SEO & Metadata
+ * Editable: Meta tags, OG tags, geo tags, schema data
+ * ⚠️ CRÍTICO: SEO afecta ranking en Google, cambiar con cuidado
+ */
+export const seoCopy = {
+  // Identidad del sitio
+  siteName: "UPP | Unión Papelera",
+  siteUrl: "https://upp.ar/",
+  domain: "upp.ar",
+  language: "es_AR",
+
+  // Organización
+  organizationName: "Unión Papelera Platense",
+  organizationShortName: "UPP",
+
+  // Meta description & keywords (Local SEO)
+  description:
+    "Unión Papelera Platense: fabricación y comercialización de papel onda e higiene 100% reciclado para industria B2B. Bobinas de calidad, entregas en Ringuelet, La Plata.",
+  keywords:
+    "papel reciclado, papel onda, papel higiene, bobinas, cartón corrugado, industrial, B2B, Argentina",
+  author: "Unión Papelera Platense",
+
+  // Page titles (HTML title + metas)
+  pageTitle: "UPP | Unión Papelera - Papel Reciclado Industrial Argentina",
+
+  // Open Graph (Social media sharing)
+  ogTitle: "UPP | Unión Papelera - Papel Reciclado Industrial",
+  ogDescription:
+    "Bobinas de papel onda e higiene 100% reciclado para industria B2B. Soluciones sostenibles con calidad garantizada.",
+  ogImage: "https://upp.ar/og-image.jpg",
+  ogType: "website",
+
+  // Twitter Card
+  twitterCard: "summary_large_image",
+  twitterTitle: "UPP | Unión Papelera - Papel Reciclado Industrial",
+  twitterDescription:
+    "Bobinas de papel onda e higiene 100% reciclado para industria B2B.",
+
+  // Geolocation (Geo-meta tags)
+  geoPlaceName: "Ringuelet, La Plata",
+  geoRegion: "AR-BA",
+  geoLatitude: "-34.8295",
+  geoLongitude: "-57.9956",
+
+  // Schema.org: PostalAddress
+  address: {
+    streetAddress: "Calle 508 e/ 16 y 17",
+    locality: "Ringuelet",
+    region: "La Plata",
+    postalCode: "1900",
+    country: "AR",
+  },
+
+  // Schema.org: Contact
+  telephone: "+54 9 11 2693-5682",
+
+  // Schema.org: Operating hours
+  operatingHours: [
+    {
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "07:00",
+      closes: "15:00",
+    },
+  ],
+
+  // Schema.org: Business type & categories
+  businessType: "LocalBusiness",
+  additionalType: "ManufacturingBusiness",
+  priceRange: "$$",
+  knowsAbout: [
+    "Papel onda",
+    "Papel higiene",
+    "Cartón corrugado",
+    "Papel reciclado",
+  ],
+} as const;
 
 /**
  * COMBINED: Todo el contenido editable
@@ -215,6 +294,7 @@ export const editableCopy = {
   stats: statsCopy,
   floatingActions: floatingActionsCopy,
   contact: contactCopy,
+  seo: seoCopy,
 } as const satisfies EditableCopy;
 
 /**
