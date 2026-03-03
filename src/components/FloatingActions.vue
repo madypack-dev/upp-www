@@ -41,7 +41,6 @@ import { computed } from "vue";
 import { siteContent } from "../content/siteContent";
 import MaterialSymbolIcon from "./icons/MaterialSymbolIcon.vue";
 import { usePhoneFormatter } from "../composables/usePhoneFormatter";
-import { contact } from "../config/contact";
 
 interface Props {
   isMenuOpen?: boolean;
@@ -58,7 +57,7 @@ const containerClasses = computed(() => ({
 }));
 
 const whatsappHref = computed(
-  () => `https://wa.me/${normalizeDigits(contact.whatsappNumber)}`,
+  () => `https://wa.me/${normalizeDigits(siteContent.contact.whatsappNumber)}`,
 );
-const phoneHref = computed(() => `tel:${normalizeTel(contact.phoneNumber)}`);
+const phoneHref = computed(() => `tel:${normalizeTel(siteContent.contact.phoneNumber)}`);
 </script>

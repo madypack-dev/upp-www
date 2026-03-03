@@ -16,6 +16,11 @@ export interface SustainabilityCard {
   description: string;
 }
 
+export interface Contact {
+  whatsappNumber: string;
+  phoneNumber: string;
+}
+
 export interface SiteContent {
   header: {
     brandShort: string;
@@ -76,4 +81,5 @@ export interface SiteContent {
     whatsappLabel: string;
     phoneAriaLabel: string;
   };
+  contact: Contact;
 }

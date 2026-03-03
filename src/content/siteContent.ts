@@ -94,4 +94,8 @@ export const siteContent = {
     whatsappLabel: "Cotizar x WhatsApp",
     phoneAriaLabel: "Llamar",
   },
+  contact: {
+    whatsappNumber: "+54 9 11 2693-5682",
+    phoneNumber: "+54 9 11 2693-5682",
+  },
 } as const satisfies SiteContent;

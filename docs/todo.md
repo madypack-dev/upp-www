@@ -21,14 +21,13 @@ Las tareas realizadas fueron movidas a `docs/todo.done.md`.
 
 ### GEO
 
-- [ ] Agregar postal code (1900) en sección de ubicación
-- [ ] Agregar horarios de operación si aplica
-- [ ] Confirmar si incluir en Google My Business (GMB)
-- [ ] Evaluar si usar coordenadas exactas o genéricas de Ringuelet
+- [x] Usar coordenadas exactas de planta (-34.8295, -57.9956)
+- [x] Agregar horarios de operación (07:00 a 15:00) en schema openingHoursSpecification
+- [ ] Evaluar Google My Business setup (GMB) para verificación local
 
 ## P2 - Arquitectura
 
-- Sin pendientes activos.
+- [x] Integrar contact info en siteContent.ts (eliminado contact.ts)
 
 ## P3 - Tests / DevOps
 

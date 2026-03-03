@@ -156,7 +156,6 @@
 import { computed, onBeforeUnmount, watch } from "vue";
 import logoImage from "../assets/images/logo.jpg";
 import { siteContent } from "../content/siteContent";
-import { contact } from "../config/contact";
 import MaterialSymbolIcon from "./icons/MaterialSymbolIcon.vue";
 
 const isMenuOpen = defineModel<boolean>();
@@ -170,7 +169,7 @@ const scrollToTop = () => {
 };
 
 const whatsappHref = computed(() => {
-  const phone = contact.whatsappNumber.replace(/\D/g, "");
+  const phone = siteContent.contact.whatsappNumber.replace(/\D/g, "");
   const message = encodeURIComponent(
     siteContent.header.whatsappPrefilledMessage,
   );

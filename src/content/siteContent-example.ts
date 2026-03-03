@@ -101,4 +101,8 @@ export const siteContentExample = {
     whatsappLabel: "CTA WhatsApp",
     phoneAriaLabel: "Llamar",
   },
+  contact: {
+    whatsappNumber: "+54 9 XXX XXXX-XXXX",
+    phoneNumber: "+54 9 XXX XXXX-XXXX",
+  },
 } as const satisfies SiteContent;
