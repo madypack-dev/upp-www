@@ -19,7 +19,7 @@
         <h2
           class="mb-2 max-w-3xl text-3xl font-bold leading-tight text-white md:text-5xl"
         >
-          Bobinas de Papel Kraft e Higiene 100% Reciclado
+          Bobinas de Papel Onda e Higiene 100% Reciclado
         </h2>
         <p class="max-w-md text-sm text-slate-200 md:text-base">
           Soluciones industriales sostenibles para el mercado B2B y mayorista.

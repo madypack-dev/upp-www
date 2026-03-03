@@ -47,7 +47,7 @@
 <script setup lang="ts">
 import MaterialSymbolIcon from "./icons/MaterialSymbolIcon.vue";
 import higieneImage from "../assets/images/higiene.png";
-import kraftImage from "../assets/images/kraft.png";
+import ondaImage from "../assets/images/onda.png";
 
 type Category = {
   title: string;
@@ -58,17 +58,17 @@ type Category = {
 
 const categories: Category[] = [
   {
-    title: "Papel Kraft",
+    title: "Papel Onda",
     description:
-      "Ideal para embalaje industrial, bolsas y protección de mercadería.",
-    image: kraftImage,
-    features: ["60-120 gr/m²", "Alta Resistencia"],
+      "Papel para cartón corrugado: se usa como capa ondulada (medium/fluting) para fabricar planchas y cajas de embalaje.",
+    image: ondaImage,
+    features: ["60-120 gr/m²", "Rigidez y amortiguación"],
   },
   {
     title: "Línea Higiene",
     description: "Bobinas jumbo para institucionales y fraccionadores.",
     image: higieneImage,
-    features: ["Doble Hoja", "100% Celulosa Reciclada"],
+    features: ["Simple Hoja", "100% Celulosa Reciclada"],
   },
 ];
 </script>
