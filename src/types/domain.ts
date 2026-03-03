@@ -1,3 +1,7 @@
+/*
+Path: src/types/domain.ts
+*/
+
 export type ProductCategoryId = "onda" | "higiene";
 
 export interface ProductCategory {
