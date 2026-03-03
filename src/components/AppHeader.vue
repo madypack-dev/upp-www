@@ -3,13 +3,18 @@
     class="glass-effect fixed left-0 right-0 top-0 w-full z-[9999] border-b border-primary/10 px-4 py-3"
   >
     <div class="mx-auto flex w-full max-w-6xl items-center justify-between">
-      <div class="flex items-center gap-3">
+      <button
+        type="button"
+        @click="scrollToTop"
+        class="flex items-center gap-3 transition hover:opacity-80"
+        aria-label="Ir al inicio"
+      >
         <img
           :src="logoImage"
           alt="Unión Papelera Logo"
           class="h-10 w-10 rounded object-cover"
         />
-        <div>
+        <div class="text-left">
           <h1 class="text-lg font-bold leading-none tracking-tight">
             {{ siteContent.header.brandShort }}
           </h1>
@@ -19,7 +24,7 @@
             {{ siteContent.header.brandFull }}
           </p>
         </div>
-      </div>
+      </button>
       <div class="flex items-center gap-2">
         <button
           type="button"
@@ -155,6 +160,14 @@ import { contact } from "../config/contact";
 import MaterialSymbolIcon from "./icons/MaterialSymbolIcon.vue";
 
 const isMenuOpen = defineModel<boolean>();
+
+const scrollToTop = () => {
+  isMenuOpen.value = false;
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
 
 const whatsappHref = computed(() => {
   const phone = contact.whatsappNumber.replace(/\D/g, "");
