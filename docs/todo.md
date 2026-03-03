@@ -57,7 +57,7 @@ Ejecución de auditoría de seguridad, arquitectura, código y DevOps. Implement
 
 ## P2 - Arquitectura / Medium Priority
 
-- [ ] **[P2] [MEDIUM] [S]** Crear tipos centralizados en `src/types/domain.ts`
+- [x] **[P2] [MEDIUM] [S]** Crear tipos centralizados en `src/types/domain.ts`
   - **Archivos:** Crear `src/types/domain.ts` con `Category`, `ContactInfo`, etc.
   - **Riesgo:** Magic types, duplicación de interfaces
   - **Criterio Aceptación:** Tipos exportados y usados en componentes
@@ -85,7 +85,7 @@ Ejecución de auditoría de seguridad, arquitectura, código y DevOps. Implement
 
 ## P3 - Tests / Low Priority for MVP
 
-- [ ] **[P3] [MEDIUM] [L]** Instalar vitest + configurar para componentes Vue
+- [x] **[P3] [MEDIUM] [L]** Instalar vitest + configurar para componentes Vue
   - **Archivos:** Crear `vitest.config.ts`, instalar deps
   - **Riesgo:** Sin red de seguridad para refactorings
   - **Criterio Aceptación:** Vitest setup funcional, primer test ejecuta
@@ -138,6 +138,7 @@ Ejecución de auditoría de seguridad, arquitectura, código y DevOps. Implement
 - [x] Se normaliza `pathname` antes del mapeo (minúsculas + remoción de trailing slash) para soportar variantes como `/Quienes-Somos/`.
 - [x] Se extrajo el mapeo de rutas a `src/utils/sectionRouting.ts` y se agregaron tests unitarios en `src/utils/sectionRouting.test.ts`.
 - [x] Se centralizó el contenido editorial en `src/content/siteContent.ts` y los componentes de UI consumen esa fuente única (mejora SRP y mantenibilidad).
+- [x] `FloatingActions.vue` también consume copy desde `siteContent`, completando la centralización del texto de la landing.
 
 ---
 

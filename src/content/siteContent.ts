@@ -1,3 +1,5 @@
+import type { SiteContent } from "../types/domain";
+
 export const siteContent = {
   header: {
     brandShort: "UPP",
@@ -84,4 +86,8 @@ export const siteContent = {
     growth: "+15%",
     growthReference: "vs año anterior",
   },
-} as const;
+  floatingActions: {
+    whatsappLabel: "Cotizar x WhatsApp",
+    phoneAriaLabel: "Llamar",
+  },
+} as const satisfies SiteContent;
