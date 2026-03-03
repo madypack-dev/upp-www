@@ -31,6 +31,11 @@ Las tareas realizadas fueron movidas a `docs/todo.done.md`.
 ## P2 - Arquitectura
 
 - [x] Integrar contact info en siteContent.ts (eliminado contact.ts)
+- [x] Extraer valores hardcodeados de index.html
+  - Creado: src/config/seo.ts (centraliza toda config SEO)
+  - Creado: Vite HTML Plugin (inyecta valores automáticamente)
+  - Actualizado: index.html con placeholders (%%PLACEHOLDER%%)
+  - Actualizado: vite.config.ts con plugin de transformación
 
 ## P3 - Tests / DevOps
 

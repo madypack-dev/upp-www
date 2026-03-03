@@ -148,6 +148,11 @@ Recomendación final:
 - ✅ H1 en Hero (jerarquía semántica: h1 → h3)
 - ✅ Geolocation meta tags (geo.placename, geo.region AR-BA, geo.position)
 - ✅ Schema JSON-LD LocalBusiness con descripción, dirección, teléfono, coordenadas
+- ✅ **Arquitectura: Valores SEO extraídos de index.html**
+  - Fuente única: `src/config/seo.ts`
+  - Mecanismo: Vite HTML Plugin (transformación en build-time)
+  - index.html: usa placeholders `%%PLACEHOLDER%%`
+  - Ventajas: DRY (Don't Repeat Yourself), fácil mantenimiento, sincronización automática
 
 ### GEO - Decisiones implementadas
 
