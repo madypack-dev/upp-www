@@ -36,6 +36,12 @@ Las tareas realizadas fueron movidas a `docs/todo.done.md`.
   - Creado: Vite HTML Plugin (inyecta valores automáticamente)
   - Actualizado: index.html con placeholders (%%PLACEHOLDER%%)
   - Actualizado: vite.config.ts con plugin de transformación
+- [x] Aplicar Arquitectura Limpia + SOLID refactorización SEO
+  - Domain: `src/domain/seo/` (interfaces + tipos puros)
+  - Application: `src/application/seo/` + `src/application/ports/` (casos de uso)
+  - Infrastructure: `src/infrastructure/seo/` (implementaciones concretas)
+  - Config: `src/config/seo.ts` (orquestación final)
+  - Documentación: `docs/clean-architecture-seo.md`
 
 ## P3 - Tests / DevOps
 

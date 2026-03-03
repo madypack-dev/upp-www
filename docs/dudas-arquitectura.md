@@ -153,6 +153,14 @@ Recomendación final:
   - Mecanismo: Vite HTML Plugin (transformación en build-time)
   - index.html: usa placeholders `%%PLACEHOLDER%%`
   - Ventajas: DRY (Don't Repeat Yourself), fácil mantenimiento, sincronización automática
+- ✅ **Arquitectura Limpia + SOLID aplicado a capa SEO**
+  - Domain layer: interfaces puros (`ISeoConfig`, `ISeoTransformer`) + tipos
+  - Application layer: casos de uso (`SeoConfigLoader`, `SeoHtmlTransformationUseCase`) + puertos
+  - Infrastructure layer: implementaciones (`SeoConfigImpl`, `ViteHtmlPlugin`, `SeoPlaceholderMapper`)
+  - Config layer: orquestación simple (`src/config/seo.ts`)
+  - Principios SOLID totalmente aplicados (SRP, OCP, LSP, ISP, DIP)
+  - Testeable sin Vite, extensible para CLI/SSR/FireBase, escalable
+  - Documentación: `docs/clean-architecture-seo.md`
 
 ### GEO - Decisiones implementadas
 
