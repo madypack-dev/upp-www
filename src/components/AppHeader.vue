@@ -148,7 +148,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineModel } from "vue";
+import { computed, defineModel, onBeforeUnmount, watch } from "vue";
 import logoImage from "../assets/images/logo.jpg";
 import { siteContent } from "../content/siteContent";
 import { contact } from "../config/contact";
@@ -162,5 +162,31 @@ const whatsappHref = computed(() => {
     siteContent.header.whatsappPrefilledMessage,
   );
   return `https://wa.me/${phone}?text=${message}`;
+});
+
+const setMenuScrollLock = (open: boolean) => {
+  document.documentElement.style.overflowX = "hidden";
+  document.body.style.overflowX = "hidden";
+
+  if (open) {
+    document.body.style.overflow = "hidden";
+    document.body.style.touchAction = "none";
+    return;
+  }
+
+  document.body.style.overflow = "";
+  document.body.style.touchAction = "";
+};
+
+watch(
+  () => Boolean(isMenuOpen.value),
+  (open) => {
+    setMenuScrollLock(open);
+  },
+  { immediate: true },
+);
+
+onBeforeUnmount(() => {
+  setMenuScrollLock(false);
 });
 </script>

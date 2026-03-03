@@ -5,11 +5,14 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
   }
 
   body {
     min-height: 100dvh;
     font-family: "Space Grotesk", sans-serif;
+    overflow-x: hidden;
   }
 }
 
