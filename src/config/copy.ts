@@ -180,8 +180,8 @@ export const floatingActionsCopy = {
  * Editable: Solo valores (no claves)
  */
 export const contactCopy = {
-  whatsappNumber: "+54 9 11 2693-5682", // Link: wa.me/5492111XXXX
-  phoneNumber: "+54 9 11 2693-5682", // Link: tel:+5492111XXXX
+  whatsappNumber: "+54 9 22 1568-5287", // Link: wa.me/5492111XXXX +54 9 2215 68-5287
+  phoneNumber: "+54 9 22 1568-5287", // Link: tel:+5492111XXXX
   // Para multi-cliente, cambiar los números completos arriba
   // Estructura: +[country] [area] [number]
   // Argentina: +54
